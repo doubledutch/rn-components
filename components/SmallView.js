@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import ReactNative, { Text, View, Image } from 'react-native'
-import { Color } from '@doubledutch/rn-client'
 
 export default class SmallView extends PureComponent {
   render() {
