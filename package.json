@@ -1,0 +1,42 @@
+{
+  "name": "@doubledutch/rn-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/doubledutch/rn-components.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "doubledutch",
+    "components"
+  ],
+  "author": "DoubleDutch",
+  "license": "ISC",
+  "dependencies": {
+    "@doubledutch/rn-client": "^3.0.5",
+    "react": "~16.0.0-alpha.12",
+    "react-native": "0.46.4"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^21.2.1",
+    "react-test-renderer": "~16.0.0-alpha.12"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|@doubledutch/base-client|@doubledutch/rn-client)/)"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/doubledutch/rn-components/issues"
+  },
+  "homepage": "https://github.com/doubledutch/rn-components#readme"
+}
