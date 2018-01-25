@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import ReactNative, { Text, View, Image } from 'react-native'
 
-export default class SmallView extends PureComponent {
+export default class SmallView extends Component {
   render() {
     const { image, title, description } = this.props
     return(

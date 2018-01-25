@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ReactNative, {Button, NativeEventEmitter, Modal, Platform} from 'react-native';
+import ReactNative, {Button, NativeEventEmitter, Platform} from 'react-native';
 import client, { Color } from '@doubledutch/rn-client'
 import YouTube, { YouTubeStandaloneAndroid } from 'react-native-youtube'
 import Video from 'react-native-video'
 const { TouchableOpacity, TouchableHighlight, Text, View, Image, WebView, Dimensions, Linking } = ReactNative
 
-export class LandingPage extends Component {
+export default class LandingPage extends Component {
   constructor(props) {
     super()
     this.state = {
@@ -21,7 +21,7 @@ export class LandingPage extends Component {
     const colorStyle = {
       color: customColor
     }
-    const { video, headline, title, des }= this.props
+    const { video, headline, title, des } = this.props
     const dimensionStyle = {
     height : Dimensions.get('window').width * .5625,
     width : Dimensions.get('window').width 
@@ -29,23 +29,23 @@ export class LandingPage extends Component {
 
     return (
       <View>
-          <View style={{backgroundColor:'#00B9C2'}}>
-            <Text style={[s.headlineText, colorStyle]}>{headline}</Text>
-          </View>
-          <View style={dimensionStyle}>
-            {this.renderPlayer(video)}
-          </View>
-          <View style={s.box}>
-            <Text style={{textAlign:'center',fontSize:25}}>Welcome To</Text>
-            <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
-            <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
-            <TouchableOpacity onPress={()=>{
-            }}>
-              <View style={{backgroundColor:customColor,borderRadius:4,padding:10}}>
-                <Text style={{color:'#FFFFFF',textAlign:'center',fontSize:16}}>Go to the Activity Feed</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+        <View style={{backgroundColor:'#00B9C2'}}>
+          <Text style={[s.headlineText, colorStyle]}>{headline}</Text>
+        </View>
+        <View style={dimensionStyle}>
+          {this.renderPlayer(video)}
+        </View>
+        <View style={s.box}>
+          <Text style={{textAlign:'center',fontSize:25}}>Welcome To</Text>
+          <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
+          <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
+          <TouchableOpacity onPress={()=>{
+          }}>
+            <View style={{backgroundColor:customColor,borderRadius:4,padding:10}}>
+              <Text style={{color:'#FFFFFF',textAlign:'center',fontSize:16}}>Go to the Activity Feed</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -155,7 +155,6 @@ const s = ReactNative.StyleSheet.create({
     justifyContent: 'center',
     flex: 1
   },
-
   playButtonText: {
     fontSize: 40,
     lineHeight: 32,
@@ -177,8 +176,6 @@ const s = ReactNative.StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row'
   },
-
-
   headlineText: {
     fontSize:32,
     textAlign:'center',
@@ -186,7 +183,6 @@ const s = ReactNative.StyleSheet.create({
     fontWeight:'bold',
     backgroundColor: '#FFFFFF'
   },
-
   carouselContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -195,7 +191,6 @@ const s = ReactNative.StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
   },
-
   box: {
     backgroundColor:'#FFFFFF',
     padding:20, 

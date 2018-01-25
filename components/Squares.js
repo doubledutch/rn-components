@@ -1,21 +1,18 @@
-import React, { Component } from 'react'
-import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
-import client, { Color } from '@doubledutch/rn-client'
-import { Footer } from './Footer'
-import { Header } from './Header'
+  import React, { Component } from 'react'
+  import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
+  import client, { Color } from '@doubledutch/rn-client'
+  import { Footer } from './Footer'
+  import { Header } from './Header'
 
-export class Squares extends Component {
-  constructor(props) {
+  export class Squares extends Component {
+    constructor(props) {
       super(props)
-      this.state = {     
-      }
-  }
+    }
 
-  render() {
+    render() {
       const width = Dimensions.get('window').width / 2 - 30
       const height = width * .6792
       const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, text } = this.props
-
       return (
         <View style={s.container}>
           <View style={s.border}/>
@@ -56,37 +53,36 @@ export class Squares extends Component {
     }
   }
 
-const s = ReactNative.StyleSheet.create({
-  container: {
-    padding: 0, 
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1
-  },
-  border: {
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1, 
-    height: 50, 
-    flex: 1
-  },
-  squareContainer: {
-    backgroundColor:'#FFFFFF',
-    borderTopWidth:1,
-    borderBottomWidth:1,
-    borderColor:'#D8D8D8'
-  },
-  cellLeft: {
-    borderRightWidth:1,
-    borderColor:'#D8D8D8',
-    flex:1,
-    padding:15,
-    alignItems:'center'
-  },
-  cellRight: {
-    flex:1,
-    padding:15,
-    alignItems:'center'
-  }
-
-});
+  const s = ReactNative.StyleSheet.create({
+    container: {
+      padding: 0, 
+      borderColor:'#D8D8D8',
+      borderBottomWidth:1
+    },
+    border: {
+      borderColor:'#D8D8D8',
+      borderBottomWidth:1, 
+      height: 50, 
+      flex: 1
+    },
+    squareContainer: {
+      backgroundColor:'#FFFFFF',
+      borderTopWidth:1,
+      borderBottomWidth:1,
+      borderColor:'#D8D8D8'
+    },
+    cellLeft: {
+      borderRightWidth:1,
+      borderColor:'#D8D8D8',
+      flex:1,
+      padding:15,
+      alignItems:'center'
+    },
+    cellRight: {
+      flex:1,
+      padding:15,
+      alignItems:'center'
+    }
+  });
 
 

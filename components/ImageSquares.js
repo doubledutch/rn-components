@@ -5,49 +5,46 @@ import { Footer } from './Footer'
 import { Header } from './Header'
 
 
-export class ImageSquares extends Component {
+export default class ImageSquares extends Component {
   constructor(props) {
       super(props)
-      this.state = {
-      }
   }
 
   render(){
     const width = Dimensions.get('window').width / 2 - 20
     const height = width
     const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4 } = this.props
-    
       return (
         <View style={s.component}>
-            <View style={s.top}/>
-            <Header
-            header = {header}
-            title = {title}
-            des = {des}
-            />
-            <View style={s.box}>
-                <View style={{flexDirection:'row'}}>
-                    <View style={s.imageBoxLeft}>
-                        <Image style={{width, height}} source={{uri: image1}}/>
-                    </View>
-                    <View style={s.imageBoxRight}>
-                        <Image style={{width, height}} source={{uri: image2}}/>
-                    </View>   
-                </View>
-                <View style={s.lowerRow}>
-                    <View style={s.imageBoxLeft}>
-                        <Image style={{width, height}} source={{uri: image3}}/>
-                    </View>
-                    <View style={s.imageBoxRight}>
-                        <Image style={{width, height}} source={{uri: image4}}/>
-                    </View>
-                </View>
+          <View style={s.top}/>
+          <Header
+          header = {header}
+          title = {title}
+          des = {des}
+          />
+          <View style={s.box}>
+            <View style={{flexDirection:'row'}}>
+              <View style={s.imageBoxLeft}>
+                <Image style={{width, height}} source={{uri: image1}}/>
+              </View>
+              <View style={s.imageBoxRight}>
+                <Image style={{width, height}} source={{uri: image2}}/>
+              </View>   
             </View>
-            <Footer
-            footer={footer}
-            buttonURL={buttonURL}
-            buttonText={buttonText}
-            />
+            <View style={s.lowerRow}>
+              <View style={s.imageBoxLeft}>
+                <Image style={{width, height}} source={{uri: image3}}/>
+              </View>
+              <View style={s.imageBoxRight}>
+                <Image style={{width, height}} source={{uri: image4}}/>
+              </View>
+            </View>
+          </View>
+          <Footer
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+          />
         </View>
       )
     }
