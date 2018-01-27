@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
 
-export class Text extends Component {
+export class TextView extends Component {
   constructor(props) {
     super(props)
   }
