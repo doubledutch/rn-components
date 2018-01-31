@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
-import { Footer } from './Footer'
-import { Header } from './Header'
+import { Footer, Header } from '@doubledutch/rn-components'
 
 export default class OneImage extends Component {
   constructor(props) {
