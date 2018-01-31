@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel'
-import { Footer, Header } from '@doubledutch/rn-components'
+import { Footer } from '@doubledutch/rn-components'
+import { Header } from './Header'
 
 
 export default class ImageCarousel extends Component {

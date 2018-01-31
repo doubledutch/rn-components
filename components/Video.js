@@ -6,7 +6,8 @@ import ReactNative, {TouchableOpacity, Text, View,
 import client, {TitleBar, Color, Avatar} from '@doubledutch/rn-client'
 import Video from 'react-native-video'
 import YouTube, { YouTubeStandaloneAndroid } from 'react-native-youtube'
-import { Footer, Header } from '@doubledutch/rn-components'
+import { Footer } from './Footer'
+import { Header } from './Header'
 
 
 export default class VideoView extends Component {
