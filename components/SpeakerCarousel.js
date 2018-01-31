@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
+import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking, Avatar } from 'react-native'
 import client, {Color} from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel'
 import { Footer, Header } from '@doubledutch/rn-components'
