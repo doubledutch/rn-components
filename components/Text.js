@@ -51,5 +51,12 @@ const s = ReactNative.StyleSheet.create({
     marginRight: 15, 
     flex: 1, 
     textAlign: 'left'
+  },
+  dimensionStyle : {
+    flexDirection: "row", 
+    flexGrow: 1,
+    aspectRatio: 1.074,
+    justifyContent: 'center'
   }
-  });
+
+});

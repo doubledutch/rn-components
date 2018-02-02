@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import client, {Color, Avatar} from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel'
-import { Footer } from './Footer'
-import { Header } from './Header'
+import Footer from './Footer'
+import Header from './Header'
 
 
 export default class SpeakerCarousel extends Component {
@@ -19,7 +19,7 @@ export default class SpeakerCarousel extends Component {
       this.props.speakerInfo.map((item =>
         <TouchableOpacity onPress={()=>{Linking.openURL(item.URL)}} style={s.cell}>
           <View style={{flexDirection: 'row', paddingTop: 10}}>
-            <Avatar user={item} client={item} size={64} style={{margin: 10, marginTop: 0}} />
+            <Image source={{uri: item.image}} style={s.image}/>
             <View style={{flexDirection: 'column'}}>
               <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5}}>{item.name}</Text>
               <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0}}>{item.title}, {item.company}</Text>
@@ -86,6 +86,15 @@ const s = ReactNative.StyleSheet.create({
     marginRight: 15, 
     marginBottom: 15, 
     fontSize: 14
+  },
+  image: {
+    marginLeft: 15,
+    marginRight: 0,
+    marginTop: 0,
+    marginBottom: 10,
+    width: 64,
+    height: 64,
+    borderRadius: 64 / 2
   }
 
 });

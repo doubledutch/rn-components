@@ -117,8 +117,6 @@ export default class VideoView extends Component {
 
   render(){
     const video = this.props.video
-    const height = Dimensions.get('window').width * .5625
-    const width = Dimensions.get('window').width 
     return(
       <View style={s.container}>
         <View style={{borderColor:'#D8D8D8',borderBottomWidth:1, height: 50, flex: 1}}/>
@@ -127,7 +125,7 @@ export default class VideoView extends Component {
         title = {title}
         des = {des}
         />
-        <View style={{width, height}}>
+        <View style={s.dimensionStyle}>
             {this.renderPlayer(video)}
         </View>
         <Footer
@@ -164,6 +162,12 @@ const styles = ReactNative.StyleSheet.create({
     borderBottomWidth:1, 
     height: 50, 
     flex: 1
+  },
+  dimensionStyle : {
+    flexDirection: "row", 
+    flexGrow: 1,
+    aspectRatio: 1.777,
+    justifyContent: 'center'
   }
 
 });

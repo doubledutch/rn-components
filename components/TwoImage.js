@@ -11,8 +11,7 @@ export default class TwoImage extends Component {
   }
   
   render(){
-    const width = Dimensions.get('window').width
-    const height = width * .4959
+
     const { footer, buttonURL, buttonText, header, title, des, imageInfo } = this.props
 
     return(
@@ -23,8 +22,8 @@ export default class TwoImage extends Component {
         title = {title}
         des = {des}
         />
-        <Image source={{uri: imageInfo[0].image}} style={{width, height}}/>
-        <Image source={{uri: imageInfo[1].image}} style={{marginTop: 10, width, height}}/>
+        <Image source={{uri: imageInfo[0].image}} style={s.dimensionStyle}/>
+        <Image source={{uri: imageInfo[1].image}} style={s.dimensionStyle1}/>
         <Footer
         footer={footer}
         buttonURL={buttonURL}
@@ -50,6 +49,19 @@ const s = ReactNative.StyleSheet.create({
     height: 50, 
     flex: 1, 
     backgroundColor: "#E8E8E8"
+  },
+  dimensionStyle : {
+    flexDirection: "row", 
+    flexGrow: 1,
+    aspectRatio: 2.0165,
+    justifyContent: 'center'
+  },
+  dimensionStyle : {
+    flexDirection: "row", 
+    flexGrow: 1,
+    aspectRatio: 2.0165,
+    justifyContent: 'center',
+    marginTop: 10
   }
     
 });
