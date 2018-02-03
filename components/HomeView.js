@@ -5,39 +5,19 @@ import client, { TitleBar, Avatar, Color } from '@doubledutch/rn-client'
 import FirebaseConnector from '@doubledutch/firebase-connector'
 import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, LandingPageExpo} from './index'
 const { View } = ReactNative
-const fbc = FirebaseConnector(client, 'customskins')
-fbc.initializeAppWithSimpleBackend()
 
 export default class HomeView extends Component {
   constructor() {
     super()
-    this.state = {
-      dataInput = this.props.dataInput
-    }
-
-    this.signin = fbc.signin()
-      .then(user => this.user = user)
-      .catch(err => console.error(err))
-  }
-  
-
-  componentDidMount() {
-    this.signin.then(() => {
-      if (client.currentUser.id !== '24601'){
-        const customRef = fbc.database.public.adminRef('custom')
-        customRef.on('child_added', data => {
-          this.setState({ danaInput: data.val() })
-        })
-      }
-    })
   }
 
   render() {
+    const dataInput = this.props.dataInput
     return (
       <View title="" style={{ flex: 1,backgroundColor:'#E8E8E8' }}>
           <TitleBar title="Welcome" client={client} signin={this.signin} />
           <ScrollView style={styles.container}>
-              { this.state.dataInput.map((details) => {  
+              { dataInput.map((details) => {  
                   return(
                   this.getComponent(details)
                   )
