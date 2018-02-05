@@ -19,7 +19,7 @@ export default class ImageCarousel extends Component {
     }
     return(
       this.props.imageInfo.map((item =>                
-        <TouchableOpacity onPress={()=>{Linking.openURL(item.URL)}} style={s.cell}>
+        <TouchableOpacity onPress={()=>{Linking.openURL(item.URL)}} style={[s.cell, dimensionStyle]}>
           <Image style={{flex: 1}}source={{uri: item.image}}></Image>
         </TouchableOpacity> 
       ))
@@ -58,10 +58,6 @@ const s = ReactNative.StyleSheet.create({
   cell: {
     marginBottom: 50, 
     backgroundColor:'#E8E8E8',
-    flexDirection: "row", 
-    flexGrow: 1,
-    aspectRatio: 1.074,
-    justifyContent: 'center',
   },
   component: {
     marginBottom: 0, 
@@ -75,9 +71,9 @@ const s = ReactNative.StyleSheet.create({
     height: 50, 
     flex: 1, 
     backgroundColor:'#E8E8E8'
-  },
+  }
 
-   });
+});
 
 
 

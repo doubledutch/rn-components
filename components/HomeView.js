@@ -2,19 +2,15 @@
 import React, { Component } from 'react';
 import ReactNative, { Button, ScrollView } from 'react-native';
 import client, { TitleBar, Avatar, Color } from '@doubledutch/rn-client'
-import FirebaseConnector from '@doubledutch/firebase-connector'
 import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, LandingPageExpo} from './index'
 const { View } = ReactNative
 
 export default class HomeView extends Component {
-  constructor() {
-    super()
-  }
 
   render() {
     const dataInput = this.props.dataInput
     return (
-      <View title="" style={{ flex: 1,backgroundColor:'#E8E8E8' }}>
+      <View style={{ flex: 1,backgroundColor:'#E8E8E8' }}>
           <TitleBar title="Welcome" client={client} signin={this.signin} />
           <ScrollView style={styles.container}>
               { dataInput.map((details) => {  

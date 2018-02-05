@@ -34,9 +34,9 @@ const s = ReactNative.StyleSheet.create({
     margin: 20, 
   },
   footerButtonText : {
-      color:'white',
-      textAlign:'center',
-      fontSize:16
+    color:'white',
+    textAlign:'center',
+    fontSize:16
   }
   
 });

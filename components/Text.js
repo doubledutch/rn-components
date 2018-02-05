@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
+import Footer from './Footer'
+import Header from './Header'
 
 export default class TextView extends Component {
   constructor(props) {
@@ -8,8 +10,6 @@ export default class TextView extends Component {
   }
   
   render(){
-    const width = Dimensions.get('window').width
-    const height = width * .931
     const { footer, buttonURL, buttonText, header, title, des, content } = this.props
     return(
       <View style={s.container}>
@@ -52,11 +52,5 @@ const s = ReactNative.StyleSheet.create({
     flex: 1, 
     textAlign: 'left'
   },
-  dimensionStyle : {
-    flexDirection: "row", 
-    flexGrow: 1,
-    aspectRatio: 1.074,
-    justifyContent: 'center'
-  }
 
 });

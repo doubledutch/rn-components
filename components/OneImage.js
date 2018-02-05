@@ -13,8 +13,6 @@ export default class OneImage extends Component {
   }
   
   render(){
-    const width = Dimensions.get('window').width
-    const height = width * .931
     const { footer, buttonURL, buttonText, header, title, des } = this.props
     return(
       <View style={s.container}>
