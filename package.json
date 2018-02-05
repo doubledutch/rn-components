@@ -35,7 +35,7 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|@doubledutch/base-client|@doubledutch/rn-client)/)"
+      "node_modules/(?!(react-native|@doubledutch/base-client|@doubledutch/rn-client|react-native-carousel|react-native-video|react-native-youtube)/)"
     ]
   },
   "bugs": {

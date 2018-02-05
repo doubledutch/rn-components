@@ -1,3 +1,4 @@
+jest.unmock('ScrollView')
 import { SmallView } from './index'
 
 test('SmallView class is exported', () => {
