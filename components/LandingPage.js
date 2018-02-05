@@ -22,18 +22,14 @@ export default class LandingPage extends Component {
       color: customColor
     }
     const { video, headline, title, des } = this.props
-    const dimensionStyle = {
-    height : Dimensions.get('window').width * .5625,
-    width : Dimensions.get('window').width 
-    }
 
     return (
       <View>
         <View style={{backgroundColor:'#00B9C2'}}>
           <Text style={[s.headlineText, colorStyle]}>{headline}</Text>
         </View>
-        <View style={dimensionStyle}>
-          {this.renderPlayer(video)}
+        <View style={s.dimensionStyle}>
+          <LandingPage {...details} excludeNativeComponents={true} />
         </View>
         <View style={s.box}>
           <Text style={{textAlign:'center',fontSize:25}}>Welcome To</Text>
@@ -197,6 +193,12 @@ const s = ReactNative.StyleSheet.create({
     borderColor:'#D8D8D8',
     borderBottomWidth:1
   },
+  dimensionStyle : {
+    flexDirection: "row", 
+    flexGrow: 1,
+    aspectRatio: 1.777,
+    justifyContent: 'center'
+  }
 });
 
 

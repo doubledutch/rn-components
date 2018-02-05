@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
+import Footer from './Footer'
+import Header from './Header'
 
-export class TextView extends Component {
+export default class TextView extends Component {
   constructor(props) {
     super(props)
   }
   
   render(){
-    const width = Dimensions.get('window').width
-    const height = width * .931
     const { footer, buttonURL, buttonText, header, title, des, content } = this.props
     return(
       <View style={s.container}>
@@ -51,5 +51,6 @@ const s = ReactNative.StyleSheet.create({
     marginRight: 15, 
     flex: 1, 
     textAlign: 'left'
-  }
-  });
+  },
+
+});

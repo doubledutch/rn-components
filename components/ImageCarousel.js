@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel'
-import { Footer } from './Footer'
-import { Header } from './Header'
+import Footer from './Footer'
+import Header from './Header'
 
 
 export default class ImageCarousel extends Component {
@@ -41,7 +41,7 @@ export default class ImageCarousel extends Component {
         animate={false}
         indicatorOffset={0}
         >
-            {this.carouselCells()}    
+          {this.carouselCells()}    
         </Carousel>
         <Footer
         footer={footer}
@@ -57,7 +57,7 @@ export default class ImageCarousel extends Component {
 const s = ReactNative.StyleSheet.create({
   cell: {
     marginBottom: 50, 
-    backgroundColor:'#E8E8E8'
+    backgroundColor:'#E8E8E8',
   },
   component: {
     marginBottom: 0, 
@@ -73,7 +73,7 @@ const s = ReactNative.StyleSheet.create({
     backgroundColor:'#E8E8E8'
   }
 
-   });
+});
 
 
 
