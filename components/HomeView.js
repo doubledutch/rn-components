@@ -1,24 +1,20 @@
-"use strict";
+'use strict'
 import React, { Component } from 'react';
-import ReactNative, { Button, ScrollView } from 'react-native';
-import client, { TitleBar, Avatar, Color } from '@doubledutch/rn-client'
+import ReactNative, { Button, ScrollView, StyleSheet, View } from 'react-native';
 import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, LandingPageExpo} from './index'
-const { View } = ReactNative
 
 export default class HomeView extends Component {
 
   render() {
-    const dataInput = this.props.dataInput
+    const {componentConfigs} = this.props
     return (
-      <View style={{ flex: 1,backgroundColor:'#E8E8E8' }}>
-        <TitleBar title="Welcome" client={client} signin={this.signin} />
+      <View style={{ flex: 1, backgroundColor:'#E8E8E8' }}>
         <ScrollView style={styles.container}>
-          { dataInput.map((details) => this.getComponent(details)) }
+          { componentConfigs.map(this.getComponent) }
         </ScrollView>
       </View>
     )
   }
-
 
   getComponent = (details) => {
     switch(details.type) {
@@ -66,7 +62,7 @@ export default class HomeView extends Component {
   }
 }
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1
   }

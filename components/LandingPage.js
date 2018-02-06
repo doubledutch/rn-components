@@ -8,20 +8,14 @@ const { TouchableOpacity, TouchableHighlight, Text, View, Image, WebView, Dimens
 export default class LandingPage extends Component {
   constructor(props) {
     super()
-    this.state = {
-      userColor: client.primaryColor 
-    }
+    this.state = {}
   }
 
   render() {
-    let customColor = this.state.userColor
-    if (this.props.color !== undefined) {
-      customColor = this.props.color
-    }
+    const { headline, title, des, excludeNativeComponents } = this.props
     const colorStyle = {
-      color: customColor
+      color: this.props.color || client.primaryColor
     }
-    const { video, headline, title, des } = this.props
 
     return (
       <View>
@@ -29,7 +23,7 @@ export default class LandingPage extends Component {
           <Text style={[s.headlineText, colorStyle]}>{headline}</Text>
         </View>
         <View style={s.dimensionStyle}>
-          <LandingPage {...details} excludeNativeComponents={true} />
+          <LandingPage {...details} excludeNativeComponents={excludeNativeComponents} />
         </View>
         <View style={s.box}>
           <Text style={{textAlign:'center',fontSize:25}}>Welcome To</Text>
@@ -46,13 +40,9 @@ export default class LandingPage extends Component {
     )
   }
 
-  onPressVideo = () => {
-    this.setState({
-      paused: !this.state.paused
-    })
-}
+  onPressVideo = () => this.setState({paused: !this.state.paused })
 
-renderYouTubePlayer(videoId) {
+  renderYouTubePlayer(videoId) {
     // Android has special rendering because the youtube component uses fragments
     // which don't play nice in list views. I'm sure someone smarter can figure out
     // how to make that work, but I could not.
@@ -79,8 +69,7 @@ renderYouTubePlayer(videoId) {
             </View>
         </TouchableHighlight>
       )
-    } 
-    else {
+    } else {
       return (
         <YouTube
           videoId={videoId}        // The YouTube video ID
@@ -95,51 +84,42 @@ renderYouTubePlayer(videoId) {
         />
       )
     }
-}
+  }
 
-renderVimeoPlayer(url) {
+  renderVimeoPlayer(url) {
     return (
       <WebView
         source={url}
         style={s.video}
       />
     )
-}
+  }
 
-renderVideoPlayer(url) {
+  renderVideoPlayer(url) {
     return (
-        <TouchableHighlight
-        ref={(ref) => {
-          console.log(ref)
-        }} style={{ flex: 1 }} onPress={() => this.videoRef.presentFullscreenPlayer()}>
+      <TouchableHighlight style={{ flex: 1 }} onPress={() => this.videoRef.presentFullscreenPlayer()}>
         <Video
-          ref={(ref) => {
-            console.log(ref)
-          }}
           source={{ uri: url }}
           style={s.video}
           paused={true}
         />
-        </TouchableHighlight>
+      </TouchableHighlight>
     )
-}
+  }
 
-renderPlayer(video) {
+  renderPlayer(video) {
     if (video) {
       if (video.toLowerCase().indexOf('youtube.com') >= 0) {
         const videoId = video.replace(/.+v=(.+?)(&|$)/g, '$1')
         return this.renderYouTubePlayer(videoId)
-      } 
-      else if (video.toLowerCase().indexOf('vimeo.com') >= 0) {
+      } else if (video.toLowerCase().indexOf('vimeo.com') >= 0) {
         return this.renderVimeoPlayer(video)
-      } 
-      else {
+      } else {
         return this.renderVideoPlayer(video)
       }
     }
     return this.renderYouTubePlayer('-xAFnaYDQa4')
   }
-
 }
 
 const s = ReactNative.StyleSheet.create({
@@ -194,12 +174,9 @@ const s = ReactNative.StyleSheet.create({
     borderBottomWidth:1
   },
   dimensionStyle : {
-    flexDirection: "row", 
+    flexDirection: 'row', 
     flexGrow: 1,
     aspectRatio: 1.777,
     justifyContent: 'center'
   }
-});
-
-
-
+})
