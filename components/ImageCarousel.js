@@ -18,8 +18,8 @@ export default class ImageCarousel extends Component {
       height : width * .931
     }
     return(
-      this.props.imageInfo.map((item =>                
-        <TouchableOpacity onPress={()=>{Linking.openURL(item.URL)}} style={[s.cell, dimensionStyle]}>
+      this.props.imageInfo.map(((item, i) =>                
+        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={[s.cell, dimensionStyle]}>
           <Image style={{flex: 1}}source={{uri: item.image}}></Image>
         </TouchableOpacity> 
       ))

@@ -16,47 +16,47 @@ export default class ConfigurableScroll extends Component {
     )
   }
 
-  getComponent = (details) => {
+  getComponent = (details, i) => {
     switch(details.type) {
       case "Landing Page Cell" :
         return(
-          <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} />
+          <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
         )
       case 'Details Cell':
         return( 
-          <SmallView {...details} />
+          <SmallView {...details} key={i} />
         )
       case "Squares Cell":
         return(
-          <ImageSquares {...details} />
+          <ImageSquares {...details} key={i} />
         )
       case "Text Squares Cell":
         return(
-          <Squares {...details} />
+          <Squares {...details} key={i} />
         )
       case "Image Carousel":
         return(
-          <ImageCarousel {...details} />
+          <ImageCarousel {...details} key={i} />
         )
       case "Speaker Highlight Cell":
         return(
-          <SpeakerCarousel {...details} />
+          <SpeakerCarousel {...details} key={i} />
         )
       case "Image Cell":
         return(
-          <OneImage {...details} />
+          <OneImage {...details} key={i} />
         )
       case "Dual Images Cell":
         return(
-          <TwoImage {...details} />
+          <TwoImage {...details} key={i} />
         )
       case "Text Cell":
         return(
-          <TextView {...details} />
+          <TextView {...details} key={i} />
         )
       case "Footer Cell":
         return(
-          <ButtonFooter {...details} />
+          <ButtonFooter {...details} key={i} />
         )
     }
   }
