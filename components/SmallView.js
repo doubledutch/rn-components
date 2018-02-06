@@ -23,7 +23,7 @@ const s = ReactNative.StyleSheet.create({
   top: {
     borderColor:'#D8D8D8',
     borderBottomWidth:1,
-    height: 50,
+    height: 25,
     flex: 1,
     backgroundColor: '#E8E8E8'
   },

@@ -119,7 +119,7 @@ export default class VideoView extends Component {
     const video = this.props.video
     return(
       <View style={s.container}>
-        <View style={{borderColor:'#D8D8D8',borderBottomWidth:1, height: 50, flex: 1}}/>
+        <View style={{borderColor:'#D8D8D8',borderBottomWidth:1, height: 25, flex: 1}}/>
         <Header
         header = {header}
         title = {title}
@@ -160,7 +160,7 @@ const styles = ReactNative.StyleSheet.create({
   border: {
     borderColor:'#D8D8D8',
     borderBottomWidth:1, 
-    height: 50, 
+    height: 25, 
     flex: 1
   },
   dimensionStyle : {

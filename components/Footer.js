@@ -22,6 +22,11 @@ export default class Footer extends Component {
         </View>
       )
     }
+    else {
+      return (
+        <View/>
+      )
+    }
   }
 
 }

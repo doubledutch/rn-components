@@ -3,6 +3,7 @@ import ReactNative, {Button, NativeEventEmitter, Platform} from 'react-native';
 import client, { Color } from '@doubledutch/rn-client'
 import YouTube, { YouTubeStandaloneAndroid } from 'react-native-youtube'
 import Video from 'react-native-video'
+import Footer from './Footer'
 const { TouchableOpacity, TouchableHighlight, Text, View, Image, WebView, Dimensions, Linking } = ReactNative
 
 export default class LandingPage extends Component {
@@ -12,30 +13,57 @@ export default class LandingPage extends Component {
   }
 
   render() {
-    const { headline, title, des, excludeNativeComponents } = this.props
-    const color = this.props.color || client.primaryColor
-
     return (
-      <View>
+      this.viewPage()
+    )
+  }
+
+  viewPage = () => {
+    const color = this.props.color || client.primaryColor
+    const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText } = this.props
+    if (bold){
+      return(
+      <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
+        <View style={s.border}/>
         <View style={{backgroundColor:'#00B9C2'}}>
           <Text style={[s.headlineText, {color}]}>{headline}</Text>
         </View>
         <View style={s.dimensionStyle}>
-          {/* <LandingPage {...this.props.details} excludeNativeComponents={excludeNativeComponents} /> */}
+          { this.props.excludeNativeComponents ? null : this.renderPlayer(video)}
         </View>
         <View style={s.box}>
-          <Text style={{textAlign:'center',fontSize:25}}>Welcome To</Text>
+          <Text style={{textAlign:'center',fontSize:25}}>Welcome to</Text>
           <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
           <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
-          <TouchableOpacity onPress={()=>{
-          }}>
-            <View style={{backgroundColor:color, borderRadius:4, padding:10}}>
-              <Text style={{color:'#FFFFFF',textAlign:'center',fontSize:16}}>Go to the Activity Feed</Text>
-            </View>
-          </TouchableOpacity>
         </View>
+        <Footer
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+        />
       </View>
-    )
+      )
+    }
+    else {
+      return (
+      <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
+        <View style={s.border}/>
+        <View style={s.box}>
+          <Text style={{textAlign:'center',fontSize:25}}>Welcome to</Text>
+          <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
+          <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
+        </View>
+        <View style={s.dimensionStyle}>
+          { this.props.excludeNativeComponents ? null : this.renderPlayer(video)}
+        </View>
+        <Footer
+        footer={footer}
+        buttonURL={buttonURL}
+        buttonText={buttonText}
+        />
+      </View>
+      )
+    }
   }
 
   onPressVideo = () => this.setState({paused: !this.state.paused })
@@ -167,9 +195,13 @@ const s = ReactNative.StyleSheet.create({
   },
   box: {
     backgroundColor:'#FFFFFF',
-    padding:20, 
+    padding:20
+  },
+  border : {
     borderColor:'#D8D8D8',
-    borderBottomWidth:1
+    borderBottomWidth:1, 
+    height: 25, 
+    flex: 1  
   },
   dimensionStyle : {
     flexDirection: 'row', 
