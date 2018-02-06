@@ -24,7 +24,7 @@ export default class ConfigurableScroll extends Component {
         )
       case "Static Landing Page Cell" :
         return(
-          <LandingPage {...details} key={i} />
+          <StaticLandingPage {...details} key={i} />
       )
       case 'Details Cell':
         return( 
