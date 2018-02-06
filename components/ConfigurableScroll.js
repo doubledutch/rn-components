@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ReactNative, { Button, ScrollView, StyleSheet, View } from 'react-native';
 import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, LandingPageExpo} from './index'
 
-export default class HomeView extends Component {
+export default class ConfigurableScroll extends Component {
 
   render() {
     const {componentConfigs} = this.props
