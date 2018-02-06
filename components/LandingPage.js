@@ -13,17 +13,15 @@ export default class LandingPage extends Component {
 
   render() {
     const { headline, title, des, excludeNativeComponents } = this.props
-    const colorStyle = {
-      color: this.props.color || client.primaryColor
-    }
+    const color = this.props.color || client.primaryColor
 
     return (
       <View>
         <View style={{backgroundColor:'#00B9C2'}}>
-          <Text style={[s.headlineText, colorStyle]}>{headline}</Text>
+          <Text style={[s.headlineText, {color}]}>{headline}</Text>
         </View>
         <View style={s.dimensionStyle}>
-          <LandingPage {...details} excludeNativeComponents={excludeNativeComponents} />
+          {/* <LandingPage {...this.props.details} excludeNativeComponents={excludeNativeComponents} /> */}
         </View>
         <View style={s.box}>
           <Text style={{textAlign:'center',fontSize:25}}>Welcome To</Text>
@@ -31,7 +29,7 @@ export default class LandingPage extends Component {
           <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
           <TouchableOpacity onPress={()=>{
           }}>
-            <View style={{backgroundColor:customColor,borderRadius:4,padding:10}}>
+            <View style={{backgroundColor:color, borderRadius:4, padding:10}}>
               <Text style={{color:'#FFFFFF',textAlign:'center',fontSize:16}}>Go to the Activity Feed</Text>
             </View>
           </TouchableOpacity>
