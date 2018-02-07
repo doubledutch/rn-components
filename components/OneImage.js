@@ -39,7 +39,7 @@ const s = ReactNative.StyleSheet.create({
   container : {
     padding: 0, 
     borderColor:'#D8D8D8',
-    borderBottomWidth:1
+    borderBottomWidth:1,
   },
   border : {
     borderColor:'#D8D8D8',
@@ -52,7 +52,8 @@ const s = ReactNative.StyleSheet.create({
     flexGrow: 1,
     aspectRatio: 1.074,
     justifyContent: 'center',
-    backgroundColor:'#E8E8E8'
+    backgroundColor:'#FFFFFF',
+    resizeMode: 'contain',
   }
   
   
