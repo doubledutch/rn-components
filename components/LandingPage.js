@@ -20,7 +20,7 @@ export default class LandingPage extends Component {
 
   viewPage = () => {
     const color = this.props.color || client.primaryColor
-    const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText } = this.props
+    const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro } = this.props
     if (bold){
       return(
       <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
@@ -30,7 +30,7 @@ export default class LandingPage extends Component {
         </View>
         {this.renderImage()}
         <View style={s.box}>
-          <Text style={{textAlign:'center',fontSize:25}}>Welcome to</Text>
+          <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text>
           <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
           <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
         </View>
@@ -47,7 +47,7 @@ export default class LandingPage extends Component {
       <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
         <View style={s.border}/>
         <View style={s.box}>
-          <Text style={{textAlign:'center',fontSize:25}}>Welcome to</Text>
+          <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text>
           <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
           <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
         </View>
@@ -73,7 +73,7 @@ export default class LandingPage extends Component {
     if (this.props.image) {
       return (
       <View style={s.dimensionStyle}>
-          <Image source={{uri: this.props.image}} style={s.dimensionStyle}/>
+          <Image source={{uri: this.props.image}} style={{flex:1, resizeMode: 'contain'}}/>
       </View>
       )
     }

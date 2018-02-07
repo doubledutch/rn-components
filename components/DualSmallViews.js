@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ReactNative, { Text, View, Image, TouchableOpacity } from 'react-native'
+import ReactNative, { Text, View, Image, TouchableOpacity, Linking } from 'react-native'
 import Footer from './Footer'
 import Header from './Header'
 
 export default class DualSmallViews extends Component {
   render() {
-    const { image1, title1, description1, image2, title2, description2, url1, url2, footer, buttonURL, buttonText, header, title, des } = this.props
+    const { image1, title1, des1, image2, title2, des2, url1, url2, footer, buttonURL, buttonText, header, title, des } = this.props
     return(
       <View>
         <View style={s.top} />
@@ -18,14 +18,14 @@ export default class DualSmallViews extends Component {
           <Image style={s.image} source={{uri: image1}} />
           <View style={s.info}>
             <Text style={s.title}>{title1}</Text>
-            <Text style={s.description}>{description1}</Text>
+            <Text style={s.description}>{des1}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>{Linking.openURL(url2)}} style={s.main2}>
           <Image style={s.image} source={{uri: image2}} />
           <View style={s.info}>
             <Text style={s.title}>{title2}</Text>
-            <Text style={s.description}>{description2}</Text>
+            <Text style={s.description}>{des2}</Text>
           </View>
         </TouchableOpacity>
         <Footer
@@ -64,8 +64,10 @@ const s = ReactNative.StyleSheet.create({
     flexDirection: 'row'
   },
   image: {
-    height: 110,
-    width: 110
+    margin: 10,
+    height: 90,
+    width: 90,
+    resizeMode: 'contain'
   },
   info: {
     marginTop: 15,
