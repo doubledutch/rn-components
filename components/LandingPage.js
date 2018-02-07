@@ -28,9 +28,7 @@ export default class LandingPage extends Component {
         <View style={{backgroundColor:'#00B9C2'}}>
           <Text style={[s.headlineText, {color}]}>{headline}</Text>
         </View>
-        <View style={s.dimensionStyle}>
-          { this.props.excludeNativeComponents ? null : this.renderPlayer(video)}
-        </View>
+        {this.renderImage()}
         <View style={s.box}>
           <Text style={{textAlign:'center',fontSize:25}}>Welcome to</Text>
           <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
@@ -53,14 +51,29 @@ export default class LandingPage extends Component {
           <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
           <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
         </View>
-        <View style={s.dimensionStyle}>
-          { this.props.excludeNativeComponents ? null : this.renderPlayer(video)}
-        </View>
+        {this.renderImage}
         <Footer
         footer={footer}
         buttonURL={buttonURL}
         buttonText={buttonText}
         />
+      </View>
+      )
+    }
+  }
+
+  renderImage = () => {
+    if (this.props.video){
+      return (
+        <View style={s.dimensionStyle}>
+          { this.props.excludeNativeComponents ? null : this.renderPlayer(this.props.video)}
+        </View>
+      )
+    }
+    if (this.props.image) {
+      return (
+      <View style={s.dimensionStyle}>
+          <Image source={{uri: this.props.image}} style={s.dimensionStyle}/>
       </View>
       )
     }

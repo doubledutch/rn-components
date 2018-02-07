@@ -22,10 +22,6 @@ export default class ConfigurableScroll extends Component {
         return(
           <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
         )
-      case "Static Landing Page Cell" :
-        return(
-          <StaticLandingPage {...details} key={i} />
-      )
       case 'Details Cell':
         return( 
           <SmallView {...details} key={i} />
