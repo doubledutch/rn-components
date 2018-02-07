@@ -16,8 +16,8 @@ export default class SpeakerCarousel extends Component {
 
   carouselCells = () => {
     return(
-      this.props.speakerInfo.map((item =>
-        <TouchableOpacity onPress={()=>{Linking.openURL(item.URL)}} style={s.cell}>
+      this.props.speakerInfo.map(((item, i) =>
+        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={s.cell}>
           <View style={{flexDirection: 'row', paddingTop: 10}}>
             <Image source={{uri: item.image}} style={s.image}/>
             <View style={{flexDirection: 'column'}}>
@@ -65,7 +65,7 @@ const s = ReactNative.StyleSheet.create({
     marginBottom: 0, 
     borderColor:'#D8D8D8', 
     borderBottomWidth:1, 
-    backgroundColor: "#E8E8E8"
+    backgroundColor: "#ffffff"
   },
   border: {
     borderColor:'#D8D8D8',
