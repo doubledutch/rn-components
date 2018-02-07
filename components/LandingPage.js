@@ -51,7 +51,7 @@ export default class LandingPage extends Component {
           <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
           <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
         </View>
-        {this.renderImage}
+        {this.renderImage()}
         <Footer
         footer={footer}
         buttonURL={buttonURL}
