@@ -56,19 +56,19 @@ export default class ImageCarousel extends Component {
 
 const s = ReactNative.StyleSheet.create({
   cell: {
-    marginBottom: 50, 
+    marginBottom: 25, 
     backgroundColor:'#E8E8E8',
   },
   component: {
     marginBottom: 0, 
-    borderColor:'#D8D8D8', 
+    borderColor:'#D8D8D8',
     borderBottomWidth:1, 
     backgroundColor: "white"
   },
   top: {
     borderColor:'#D8D8D8',
     borderBottomWidth:1, 
-    height: 50, 
+    height: 25, 
     flex: 1, 
     backgroundColor:'#E8E8E8'
   }
