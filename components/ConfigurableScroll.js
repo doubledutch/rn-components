@@ -17,7 +17,7 @@
 'use strict'
 import React, { Component } from 'react';
 import ReactNative, { Button, ScrollView, StyleSheet, View } from 'react-native';
-import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter} from './index'
+import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView} from './index'
 
 export default class ConfigurableScroll extends Component {
 
@@ -39,9 +39,9 @@ export default class ConfigurableScroll extends Component {
           <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
         )
       case "Twitter Cell" :
-      return(
-        <Twitter {...details} key={i} />
-      )
+        return(
+          <Twitter {...details} key={i} />
+        )
       case 'Details Cell':
         return( 
           <SmallView {...details} key={i} />
@@ -82,6 +82,10 @@ export default class ConfigurableScroll extends Component {
         return(
           <ButtonFooter {...details} key={i} />
         )
+      case "Video Cell":
+        return(
+          <VideoView {...details} key={i} />
+      )
     }
   }
 }

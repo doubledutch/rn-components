@@ -132,16 +132,16 @@ export default class VideoView extends Component {
   
 
   render(){
-    const video = this.props.video
+    const { footer, buttonURL, buttonText, header, title, des, video } = this.props
     return(
-      <View style={s.container}>
+      <View style={styles.container}>
         <View style={{borderColor:'#D8D8D8',borderBottomWidth:1, height: 25, flex: 1}}/>
         <Header
         header = {header}
         title = {title}
         des = {des}
         />
-        <View style={s.dimensionStyle}>
+        <View style={styles.dimensionStyle}>
             {this.renderPlayer(video)}
         </View>
         <Footer
