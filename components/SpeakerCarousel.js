@@ -17,7 +17,7 @@
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import client, {Color} from '@doubledutch/rn-client'
-import Carousel from 'react-native-carousel'
+import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'
 
@@ -26,14 +26,14 @@ export default class SpeakerCarousel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userColor: client.primaryColor
+      height: 240
     }
   }
 
   carouselCells = () => {
     return(
       this.props.speakerInfo.map(((item, i) =>
-        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={s.cell}>
+        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={s.cell} activeOpacity={1.0}>
           <View style={{flexDirection: 'row', paddingTop: 10}}>
             <Image source={{uri: item.image}} style={s.image}/>
             <View style={{flexDirection: 'column'}}>
@@ -49,6 +49,8 @@ export default class SpeakerCarousel extends Component {
     )
   }
 
+
+
   render() {
     const { footer, buttonURL, buttonText, header, title, des } = this.props
     return (
@@ -62,7 +64,8 @@ export default class SpeakerCarousel extends Component {
         <Carousel
         indicatorAtBottom={true}
         animate={false}
-        indicatorOffset={0}
+        indicatorOffset={10}
+        height={this.state.height}
         >
         {this.carouselCells()}    
         </Carousel>
@@ -91,8 +94,7 @@ const s = ReactNative.StyleSheet.create({
     backgroundColor:'#E8E8E8'
   },
   cell: {
-    width: Dimensions.get('window').width, 
-    marginBottom: 50, 
+    width: Dimensions.get('window').width,  
     backgroundColor:'#E8E8E8'
   },
   cellDes: {
@@ -114,7 +116,6 @@ const s = ReactNative.StyleSheet.create({
   }
 
 });
-
 
 
 
