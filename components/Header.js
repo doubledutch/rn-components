@@ -24,10 +24,11 @@ export default class Header extends Component {
     }
 
     render() {
-      const { header, title, des } = this.props
+      const { header, title, des, intro } = this.props
       if (header) {
         return (
-          <View style={{backgroundColor: 'white'}}>    
+          <View style={{backgroundColor: 'white'}}> 
+            <Text style={s.header}>{intro}</Text>    
             <Text style={s.header}>{title}</Text>
             <Text style={s.description}>{des}</Text>
           </View>
