@@ -46,9 +46,9 @@ export default class LandingPage extends Component {
         </View>
         {this.renderImage()}
         <View style={s.box}>
-          <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text>
-          <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
-          <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
+          {intro.length ? <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text> : null}
+          {title.length ? <Text style={{textAlign:'center',fontSize:25}}>{title}</Text> : null}
+          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text> : null}
         </View>
         <Footer
           footer={footer}
@@ -63,9 +63,9 @@ export default class LandingPage extends Component {
       <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
         <View style={s.border}/>
         <View style={s.box}>
-          <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text>
-          <Text style={{textAlign:'center',fontSize:25}}>{title}</Text>
-          <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text>
+          {intro.length ? <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text> : null}
+          {title.length ? <Text style={{textAlign:'center',fontSize:25}}>{title}</Text> : null}
+          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text> : null}
         </View>
         {this.renderImage()}
         <Footer

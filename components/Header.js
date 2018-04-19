@@ -28,16 +28,16 @@ export default class Header extends Component {
       if (header) {
         return (
           <View style={{backgroundColor: 'white'}}> 
-            <Text style={s.header}>{intro}</Text>    
-            <Text style={s.header}>{title}</Text>
-            <Text style={s.description}>{des}</Text>
+            {intro.length ? <Text style={s.header}>{intro}</Text> : null}  
+            {title.length ? <Text style={s.header}>{title}</Text> : null}
+            {des.length ? <Text style={s.description}>{des}</Text> : null}
           </View>
         )
       }
       else {
         return (
           <View style={{backgroundColor: 'white'}}>
-            <Text style={s.header2}>{title}</Text>
+            {title.length ? <Text style={s.header2}>{title}</Text> : null}
           </View>
         )
       }
