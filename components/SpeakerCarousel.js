@@ -52,7 +52,7 @@ export default class SpeakerCarousel extends Component {
 
 
   render() {
-    const { footer, buttonURL, buttonText, header, title, des } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
     return (
       <View style={s.container}>
         <View style={s.border}/>
@@ -60,6 +60,7 @@ export default class SpeakerCarousel extends Component {
         header = {header}
         title = {title}
         des = {des}
+        intro = {intro}
         />
         <Carousel
         indicatorAtBottom={true}

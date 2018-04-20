@@ -16,7 +16,7 @@
 
 'use strict'
 import React, { Component } from 'react';
-import ReactNative, { Button, ScrollView, StyleSheet, View } from 'react-native';
+import ReactNative, { Button, ScrollView, StyleSheet, View, Text } from 'react-native';
 import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView} from './index'
 
 export default class ConfigurableScroll extends Component {
@@ -25,6 +25,7 @@ export default class ConfigurableScroll extends Component {
     const {componentConfigs} = this.props
     return (
       <View style={{ flex: 1, backgroundColor:'#E8E8E8' }}>
+        {(!componentConfigs.length) ? <Text>Loading...</Text> : null}
         <ScrollView style={styles.container}>
           { componentConfigs.map(this.getComponent) }
         </ScrollView>

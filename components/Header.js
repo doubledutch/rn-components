@@ -27,9 +27,11 @@ export default class Header extends Component {
       const { header, title, des, intro } = this.props
       if (header) {
         return (
-          <View style={{backgroundColor: 'white'}}> 
-            {intro.length ? <Text style={s.header}>{intro}</Text> : null}  
-            {title.length ? <Text style={s.header}>{title}</Text> : null}
+          <View style={{backgroundColor: 'white'}}>
+            <View style={s.headerBox}>
+              {intro.length ? <Text style={s.header}>{intro}</Text> : null}  
+              {title.length ? <Text style={s.subHeader}>{title}</Text> : null}
+            </View>
             {des.length ? <Text style={s.description}>{des}</Text> : null}
           </View>
         )
@@ -45,14 +47,27 @@ export default class Header extends Component {
 }
 
 const s = ReactNative.StyleSheet.create({
+  headerBox : {
+    marginTop: 20,
+    marginBottom: 20,
+  },
   header : {
     textAlign: "center",
     fontSize: 26,
     flex: 1,
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
-    marginBottom:5
+    marginTop: 0,
+    marginBottom: 0
+  },
+  subHeader : {
+    textAlign: "center",
+    fontSize: 26,
+    flex: 1,
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom:0,
+    marginTop: 0
   },
   description : {
     textAlign: "center",
@@ -60,7 +75,7 @@ const s = ReactNative.StyleSheet.create({
     flex: 1,
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 5,
+    marginTop: 0,
     marginBottom: 25
   },
   header2: {

@@ -34,7 +34,7 @@ export default class ButtonFooter extends Component {
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={()=>{
-            Linking.openURL(buttons[0].buttonURL)
+            Linking.openURL(buttons[1].buttonURL)
           }} style={{marginTop:20}}>
             <View style={s.buttonBox}>
               <Text style={s.button}>{buttons[1].buttonTitle}</Text>

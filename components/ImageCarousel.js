@@ -43,7 +43,7 @@ export default class ImageCarousel extends Component {
   
   render() {
     const width = Dimensions.get('window').width
-    const { footer, buttonURL, buttonText, header, title, des } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
     return (
       <View style={s.component}>
         <View style={s.top}/>
@@ -51,6 +51,7 @@ export default class ImageCarousel extends Component {
         header = {header}
         title = {title}
         des = {des}
+        intro = {intro}
         />
         <Carousel
         indicatorAtBottom={true}

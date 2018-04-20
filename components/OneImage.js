@@ -29,7 +29,7 @@ export default class OneImage extends Component {
   }
   
   render(){
-    const { footer, buttonURL, buttonText, header, title, des } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
     return(
       <View style={s.container}>
         <View style={s.border}/>
@@ -37,6 +37,7 @@ export default class OneImage extends Component {
         header = {header}
         title = {title}
         des = {des}
+        intro = {intro}
         />
         <Image source={{uri: this.props.imageInfo.image}} style={s.dimensionStyle}/>
         <Footer
