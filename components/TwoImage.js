@@ -28,7 +28,7 @@ export default class TwoImage extends Component {
   
   render(){
 
-    const { footer, buttonURL, buttonText, header, title, des, imageInfo } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, imageInfo, intro } = this.props
 
     return(
       <View style={s.container}>
@@ -37,6 +37,7 @@ export default class TwoImage extends Component {
         header = {header}
         title = {title}
         des = {des}
+        intro = {intro}
         />
         <Image source={{uri: imageInfo[0].image}} style={s.dimensionStyle}/>
         <Image source={{uri: imageInfo[1].image}} style={s.dimensionStyle1}/>

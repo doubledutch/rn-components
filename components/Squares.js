@@ -28,7 +28,7 @@ import React, { Component } from 'react'
     render() {
       const width = Dimensions.get('window').width / 2 - 30
       const height = width * .6792
-      const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, text } = this.props
+      const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, text, intro } = this.props
       return (
         <View style={s.container}>
           <View style={s.border}/>
@@ -36,6 +36,7 @@ import React, { Component } from 'react'
             header = {header}
             title = {title}
             des = {des}
+            intro = {intro}
           />
           <View style={s.squareContainer}>
             <View style={{flexDirection:'row'}}>
