@@ -15,34 +15,48 @@
  */
 
 import React, { Component } from 'react'
-import ReactNative, { TouchableOpacity, Text, View, Linking } from 'react-native'
+import ReactNative, { TouchableOpacity, Text, View, Linking, Alert } from 'react-native'
 import client, {Color} from '@doubledutch/rn-client'
 
 export default class ButtonFooter extends Component {
   constructor(props) {
     super(props)
   }
-    render(){
-      const { buttons } = this.props
-      return(
-        <View style={s.container}>
-          <TouchableOpacity onPress={()=>{
-            this.openWebURL(buttons[0].buttonURL)
-          }}>
-            <View style={s.buttonBox}>
-              <Text style={s.button}>{buttons[0].buttonTitle}</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{
-            Linking.openURL(buttons[1].buttonURL)
-          }} style={{marginTop:20}}>
-            <View style={s.buttonBox}>
-              <Text style={s.button}>{buttons[1].buttonTitle}</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      )
+  render(){
+    const { buttons } = this.props
+    return(
+      <View style={s.container}>
+        <TouchableOpacity onPress={()=>{
+          this.linkCheck(this.linkCheck(buttons[0].buttonURL))
+        }}>
+          <View style={s.buttonBox}>
+            <Text style={s.button}>{buttons[0].buttonTitle}</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>
+          this.linkCheck(buttons[1].buttonURL)
+        } style={{marginTop:20}}>
+          <View style={s.buttonBox}>
+            <Text style={s.button}>{buttons[1].buttonTitle}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  linkCheck = (link) => {
+    if (link) {
+      Linking.canOpenURL(link).then(supported => {
+        if (!supported) {
+          Alert.alert('This link is unavailable')
+        } else {
+          Linking.openURL(link)
+        }
+      }).catch(err => Alert.alert('This link is unavailable'))
     }
+    else Alert.alert('This link is unavailable')
+  }
+
 }
 
 const s = ReactNative.StyleSheet.create({
@@ -50,14 +64,12 @@ const s = ReactNative.StyleSheet.create({
     padding: 20
   },
   buttonBox: {
-    borderColor: client.primaryColor,
-    borderWidth:1,
-    backgroundColor:'#FFFFFF',
+    backgroundColor: client.primaryColor,
     borderRadius:4,
     padding:10
   },
   button: {
-    color: client.primaryColor,
+    color: "#FFFFFF",
     textAlign:'center',
     fontSize:16
   }

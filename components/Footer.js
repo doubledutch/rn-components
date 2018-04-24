@@ -15,7 +15,7 @@
  */
 
 import React, { Component } from 'react'
-import ReactNative, { TouchableOpacity, Text, View, Image, Linking } from 'react-native'
+import ReactNative, { TouchableOpacity, Text, View, Image, Linking, Alert } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
 
 export default class Footer extends Component {
@@ -28,9 +28,7 @@ export default class Footer extends Component {
     if (footer) {
       return (
         <View style={{backgroundColor: 'white'}}>
-          <TouchableOpacity onPress={()=>{
-          Linking.openURL(buttonURL)
-          }} style={{marginTop:0}}>
+          <TouchableOpacity onPress={()=>this.linkCheck(buttonURL)} style={{marginTop:0}}>
             <View style={s.footerButton}>
               <Text style={s.footerButtonText}>{buttonText}</Text>
             </View>
@@ -45,7 +43,21 @@ export default class Footer extends Component {
     }
   }
 
+  linkCheck = (link) => {
+    if (link) {
+      Linking.canOpenURL(link).then(supported => {
+        if (!supported) {
+          Alert.alert('This link is unavailable')
+        } else {
+          Linking.openURL(link)
+        }
+      }).catch(err => Alert.alert('This link is unavailable'))
+    }
+    else Alert.alert('This link is unavailable')
+  }
+  
 }
+
 
 const s = ReactNative.StyleSheet.create({
   footerButton : {

@@ -15,7 +15,7 @@
  */
 
 import React, { Component } from 'react'
-import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking } from 'react-native'
+import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking, Alert } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
@@ -34,11 +34,24 @@ export default class ImageCarousel extends Component {
     }
     return(
       this.props.imageInfo.map(((item, i) =>                
-        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={[s.cell, dimensionStyle]} activeOpacity={1.0}>
+        <TouchableOpacity key={i} onPress={() => this.linkCheck(item.URL)} style={[s.cell, dimensionStyle]} activeOpacity={1.0}>
           <Image style={{flex: 1, resizeMode: 'contain'}}source={{uri: item.image}}></Image>
         </TouchableOpacity> 
       ))
     )
+  }
+
+  linkCheck = (link) => {
+    if (link) {
+      Linking.canOpenURL(link).then(supported => {
+        if (!supported) {
+          Alert.alert('This link is unavailable')
+        } else {
+          Linking.openURL(link)
+        }
+      }).catch(err => Alert.alert('This link is unavailable'))
+    }
+    else Alert.alert('This link is unavailable')
   }
   
   render() {

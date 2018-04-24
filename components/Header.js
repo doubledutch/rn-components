@@ -79,7 +79,7 @@ const s = ReactNative.StyleSheet.create({
     marginBottom: 25
   },
   header2: {
-    textAlign: "left",
+    textAlign: "center",
     fontSize: 18,
     flex: 1,
     marginLeft: 15,

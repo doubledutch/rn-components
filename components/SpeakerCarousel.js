@@ -33,12 +33,12 @@ export default class SpeakerCarousel extends Component {
   carouselCells = () => {
     return(
       this.props.speakerInfo.map(((item, i) =>
-        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={s.cell} activeOpacity={1.0}>
+        <TouchableOpacity key={i} onPress={()=>this.linkCheck(item.URL)} style={s.cell} activeOpacity={1.0}>
           <View style={{flexDirection: 'row', paddingTop: 10}}>
             <Image source={{uri: item.image}} style={s.image}/>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'column', marginRight: 15, flex: 1}}>
               <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5}}>{item.name}</Text>
-              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0}}>{item.title}, {item.company}</Text>
+              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0}}>{item.title}{(item.company) ? "," : null} {item.company}</Text>
             </View>
           </View>
           <View style={{flex: 1}}>
@@ -47,6 +47,19 @@ export default class SpeakerCarousel extends Component {
         </TouchableOpacity>     
       ))
     )
+  }
+
+  linkCheck = (link) => {
+    if (link) {
+      Linking.canOpenURL(link).then(supported => {
+        if (!supported) {
+          Alert.alert('This link is unavailable')
+        } else {
+          Linking.openURL(link)
+        }
+      }).catch(err => Alert.alert('This link is unavailable'))
+    }
+    else Alert.alert('This link is unavailable')
   }
 
 
@@ -96,7 +109,10 @@ const s = ReactNative.StyleSheet.create({
   },
   cell: {
     width: Dimensions.get('window').width,  
-    backgroundColor:'#E8E8E8'
+    backgroundColor:'#E8E8E8',
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center'
   },
   cellDes: {
     flex: 1, 

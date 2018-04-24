@@ -31,14 +31,14 @@ export default class DualSmallViews extends Component {
         des = {des}
         intro = {intro}
         />
-        <TouchableOpacity onPress={()=>{Linking.openURL(url1)}} style={s.main}>
+        <TouchableOpacity onPress={()=>linkCheck(url1)} style={s.main}>
           <Image style={s.image} source={{uri: image1}} />
           <View style={s.info}>
             <Text style={s.title}>{title1}</Text>
             <Text style={s.description}>{des1}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{Linking.openURL(url2)}} style={s.main2}>
+        <TouchableOpacity onPress={this.linkCheck(url2)} style={s.main2}>
           <Image style={s.image} source={{uri: image2}} />
           <View style={s.info}>
             <Text style={s.title}>{title2}</Text>
@@ -52,6 +52,18 @@ export default class DualSmallViews extends Component {
         />
       </View>
     )
+  }
+  linkCheck = (link) => {
+    if (link) {
+      Linking.canOpenURL(link).then(supported => {
+        if (!supported) {
+          Alert.alert('This link is unavailable')
+        } else {
+          Linking.openURL(link)
+        }
+      }).catch(err => Alert.alert('This link is unavailable'))
+    }
+    else Alert.alert('This link is unavailable')
   }
 }
     
