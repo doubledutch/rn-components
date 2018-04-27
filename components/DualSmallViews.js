@@ -53,7 +53,9 @@ export default class DualSmallViews extends Component {
       </View>
     )
   }
-  linkCheck = (link) => {
+
+  linkCheck = (string) => {
+    var link = string.trim()
     if (link) {
       Linking.canOpenURL(link).then(supported => {
         if (!supported) {
@@ -65,6 +67,7 @@ export default class DualSmallViews extends Component {
     }
     else Alert.alert('This link is unavailable')
   }
+
 }
     
 const s = ReactNative.StyleSheet.create({
@@ -108,9 +111,11 @@ const s = ReactNative.StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    marginBottom: 5
+    marginBottom: 5,
+    color: '#364247'
   },
   description: {
-    fontSize: 14
+    fontSize: 14,
+    color: '#364247'
   }
 })

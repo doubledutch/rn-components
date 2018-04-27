@@ -41,7 +41,8 @@ export default class ImageCarousel extends Component {
     )
   }
 
-  linkCheck = (link) => {
+  linkCheck = (string) => {
+    var link = string.trim()
     if (link) {
       Linking.canOpenURL(link).then(supported => {
         if (!supported) {

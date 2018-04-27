@@ -58,7 +58,8 @@ const s = ReactNative.StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     marginTop: 0,
-    marginBottom: 0
+    marginBottom: 0,
+    color: '#364247'
   },
   subHeader : {
     textAlign: "center",
@@ -67,7 +68,8 @@ const s = ReactNative.StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     marginBottom:0,
-    marginTop: 0
+    marginTop: 0,
+    color: '#364247'
   },
   description : {
     textAlign: "center",
@@ -76,7 +78,8 @@ const s = ReactNative.StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     marginTop: 0,
-    marginBottom: 25
+    marginBottom: 25,
+    color: '#364247'
   },
   header2: {
     textAlign: "center",
@@ -84,7 +87,8 @@ const s = ReactNative.StyleSheet.create({
     flex: 1,
     marginLeft: 15,
     marginTop: 5,
-    marginBottom:5
+    marginBottom:5,
+    color: '#364247'
   }
 
 });

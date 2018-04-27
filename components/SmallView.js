@@ -64,10 +64,12 @@ const s = ReactNative.StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    marginBottom: 5
+    marginBottom: 5,
+    color: '#364247'
   },
   description: {
-    fontSize: 14
+    fontSize: 14,
+    color: '#364247'
   }
 })
     

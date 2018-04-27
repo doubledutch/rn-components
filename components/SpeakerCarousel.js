@@ -37,8 +37,8 @@ export default class SpeakerCarousel extends Component {
           <View style={{flexDirection: 'row', paddingTop: 10}}>
             <Image source={{uri: item.image}} style={s.image}/>
             <View style={{flexDirection: 'column', marginRight: 15, flex: 1}}>
-              <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5}}>{item.name}</Text>
-              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0}}>{item.title}{(item.company) ? "," : null} {item.company}</Text>
+              <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5, color: '#364247'}}>{item.name}</Text>
+              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0, color: '#364247'}}>{item.title}{(item.company && item.title) ? "," : null} {item.company}</Text>
             </View>
           </View>
           <View style={{flex: 1}}>
@@ -49,7 +49,8 @@ export default class SpeakerCarousel extends Component {
     )
   }
 
-  linkCheck = (link) => {
+  linkCheck = (string) => {
+    var link = string.trim()
     if (link) {
       Linking.canOpenURL(link).then(supported => {
         if (!supported) {
@@ -80,6 +81,7 @@ export default class SpeakerCarousel extends Component {
         animate={false}
         indicatorOffset={10}
         height={this.state.height}
+        width={Dimensions.get('window').width}
         >
         {this.carouselCells()}    
         </Carousel>
@@ -120,7 +122,8 @@ const s = ReactNative.StyleSheet.create({
     marginLeft: 15, 
     marginRight: 15, 
     marginBottom: 15, 
-    fontSize: 14
+    fontSize: 14,
+    color: '#364247'
   },
   image: {
     marginLeft: 15,

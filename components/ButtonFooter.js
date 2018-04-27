@@ -27,24 +27,25 @@ export default class ButtonFooter extends Component {
     return(
       <View style={s.container}>
         <TouchableOpacity onPress={()=>{
-          this.linkCheck(this.linkCheck(buttons[0].buttonURL))
+          this.linkCheck(buttons[0].buttonURL)
         }}>
           <View style={s.buttonBox}>
-            <Text style={s.button}>{buttons[0].buttonTitle}</Text>
+            <Text style={s.button}>{buttons[0].buttonTitle.trim()}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>
           this.linkCheck(buttons[1].buttonURL)
         } style={{marginTop:20}}>
           <View style={s.buttonBox}>
-            <Text style={s.button}>{buttons[1].buttonTitle}</Text>
+            <Text style={s.button}>{buttons[1].buttonTitle.trim()}</Text>
           </View>
         </TouchableOpacity>
       </View>
     )
   }
 
-  linkCheck = (link) => {
+  linkCheck = (string) => {
+    var link = string.trim()
     if (link) {
       Linking.canOpenURL(link).then(supported => {
         if (!supported) {

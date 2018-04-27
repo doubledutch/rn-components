@@ -30,7 +30,7 @@ export default class Footer extends Component {
         <View style={{backgroundColor: 'white'}}>
           <TouchableOpacity onPress={()=>this.linkCheck(buttonURL)} style={{marginTop:0}}>
             <View style={s.footerButton}>
-              <Text style={s.footerButtonText}>{buttonText}</Text>
+              <Text style={s.footerButtonText}>{buttonText.trim()}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -43,7 +43,8 @@ export default class Footer extends Component {
     }
   }
 
-  linkCheck = (link) => {
+  linkCheck = (string) => {
+    var link = string.trim()
     if (link) {
       Linking.canOpenURL(link).then(supported => {
         if (!supported) {
