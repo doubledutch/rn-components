@@ -42,21 +42,21 @@ import React, { Component } from 'react'
             <View style={{flexDirection:'row'}}>
               <View style={s.cellLeft}>
                 <Image style={{width, height, marginBottom:14}} source={{uri: image1}}/>
-                <Text style={{textAlign:'center'}}>{this.props.text1}</Text>
+                <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text1}</Text>
               </View>
               <View style={s.cellRight}>
                 <Image style={{width, height, marginBottom:14}} source={{uri: image2}}/>
-                <Text style={{textAlign:'center'}}>{this.props.text2}</Text>
+                <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text2}</Text>
               </View>   
             </View>
             <View style={{flexDirection:'row',borderTopWidth:1,borderColor:'#D8D8D8'}}>
               <View style={s.cellLeft}>
                 <Image style={{width, height, marginBottom:14}} source={{uri: image3}}/>
-                <Text style={{textAlign:'center'}}>{this.props.text3}</Text>
+                <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text3}</Text>
               </View>
               <View style={s.cellRight}>
                 <Image style={{width, height, marginBottom:14}} source={{uri: image4}}/>
-                <Text style={{textAlign:'center'}}>{this.props.text4}</Text>
+                <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text4}</Text>
               </View>
             </View>
           </View>

@@ -46,9 +46,9 @@ export default class LandingPage extends Component {
         </View>
         {this.renderImage()}
         <View style={s.box}>
-          {intro.length ? <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text> : null}
-          {title.length ? <Text style={{textAlign:'center',fontSize:25}}>{title}</Text> : null}
-          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text> : null}
+          {intro.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{intro}</Text> : null}
+          {title.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{title}</Text> : null}
+          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20, color: '#364247'}}>{des}</Text> : null}
         </View>
         <Footer
           footer={footer}
@@ -63,9 +63,9 @@ export default class LandingPage extends Component {
       <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
         <View style={s.border}/>
         <View style={s.box}>
-          {intro.length ? <Text style={{textAlign:'center',fontSize:25}}>{intro}</Text> : null}
-          {title.length ? <Text style={{textAlign:'center',fontSize:25}}>{title}</Text> : null}
-          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20}}>{des}</Text> : null}
+          {intro.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{intro}</Text> : null}
+          {title.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{title}</Text> : null}
+          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20, color: '#364247'}}>{des}</Text> : null}
         </View>
         {this.renderImage()}
         <Footer
@@ -162,15 +162,20 @@ export default class LandingPage extends Component {
     )
   }
 
-  renderPlayer(video) {
-    if (video) {
-      if (video.toLowerCase().indexOf('youtube.com') >= 0) {
-        const videoId = video.replace(/.+v=(.+?)(&|$)/g, '$1')
-        return this.renderYouTubePlayer(videoId)
-      } else if (video.toLowerCase().indexOf('vimeo.com') >= 0) {
-        return this.renderVimeoPlayer(video)
-      } else {
-        return this.renderVideoPlayer(video)
+  renderPlayer(videoUrl) {
+    if (videoUrl) {
+      if (videoUrl.toLowerCase().indexOf('youtube.com') >= 0) {
+        const match = videoUrl.match(/(\?|&)v=([^&]+)/)
+        if (match && match[2]) {
+          return this.renderYouTubePlayer(match[2])
+        }
+      } else if (videoUrl.toLowerCase().indexOf('youtu.be') >= 0) {
+        const match = videoUrl.match(/youtu\.be\/([^\?\/]+)/)
+        if (match && match[1]) {
+          return this.renderYouTubePlayer(match[1])
+        }        
+      } else if (videoUrl.toLowerCase().indexOf('vimeo.com') >= 0) {
+        return this.renderVimeoPlayer(videoUrl)
       }
     }
     return this.renderYouTubePlayer('-xAFnaYDQa4')

@@ -67,7 +67,8 @@ const s = ReactNative.StyleSheet.create({
     marginLeft: 15, 
     marginRight: 15, 
     flex: 1, 
-    textAlign:'center'
+    textAlign:'center',
+    color: '#364247'
   },
 
 });

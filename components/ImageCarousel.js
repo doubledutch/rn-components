@@ -15,11 +15,13 @@
  */
 
 import React, { Component } from 'react'
-import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking } from 'react-native'
+import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking, Alert } from 'react-native'
 import client, { Color } from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
+
 
 
 export default class ImageCarousel extends Component {
@@ -34,7 +36,7 @@ export default class ImageCarousel extends Component {
     }
     return(
       this.props.imageInfo.map(((item, i) =>                
-        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={[s.cell, dimensionStyle]} activeOpacity={1.0}>
+        <TouchableOpacity key={i} onPress={() => linkCheck(item.URL)} style={[s.cell, dimensionStyle]} activeOpacity={1.0}>
           <Image style={{flex: 1, resizeMode: 'contain'}}source={{uri: item.image}}></Image>
         </TouchableOpacity> 
       ))

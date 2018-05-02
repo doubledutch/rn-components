@@ -18,6 +18,7 @@ import React, { Component } from 'react'
 import ReactNative, { Text, View, Image, TouchableOpacity, Linking } from 'react-native'
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
 
 export default class DualSmallViews extends Component {
   render() {
@@ -31,14 +32,14 @@ export default class DualSmallViews extends Component {
         des = {des}
         intro = {intro}
         />
-        <TouchableOpacity onPress={()=>{Linking.openURL(url1)}} style={s.main}>
+        <TouchableOpacity onPress={()=>linkCheck(url1)} style={s.main}>
           <Image style={s.image} source={{uri: image1}} />
           <View style={s.info}>
             <Text style={s.title}>{title1}</Text>
             <Text style={s.description}>{des1}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{Linking.openURL(url2)}} style={s.main2}>
+        <TouchableOpacity onPress={this.linkCheck(url2)} style={s.main2}>
           <Image style={s.image} source={{uri: image2}} />
           <View style={s.info}>
             <Text style={s.title}>{title2}</Text>
@@ -96,9 +97,11 @@ const s = ReactNative.StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    marginBottom: 5
+    marginBottom: 5,
+    color: '#364247'
   },
   description: {
-    fontSize: 14
+    fontSize: 14,
+    color: '#364247'
   }
 })

@@ -20,6 +20,7 @@ import client, {Color} from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
 
 
 export default class SpeakerCarousel extends Component {
@@ -33,12 +34,12 @@ export default class SpeakerCarousel extends Component {
   carouselCells = () => {
     return(
       this.props.speakerInfo.map(((item, i) =>
-        <TouchableOpacity key={i} onPress={()=>{Linking.openURL(item.URL)}} style={s.cell} activeOpacity={1.0}>
+        <TouchableOpacity key={i} onPress={()=>linkCheck(item.URL)} style={s.cell} activeOpacity={1.0}>
           <View style={{flexDirection: 'row', paddingTop: 10}}>
             <Image source={{uri: item.image}} style={s.image}/>
-            <View style={{flexDirection: 'column'}}>
-              <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5}}>{item.name}</Text>
-              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0}}>{item.title}, {item.company}</Text>
+            <View style={{flexDirection: 'column', marginRight: 15, flex: 1}}>
+              <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5, color: '#364247'}}>{item.name}</Text>
+              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0, color: '#364247'}}>{item.title}{(item.company && item.title) ? "," : null} {item.company}</Text>
             </View>
           </View>
           <View style={{flex: 1}}>
@@ -48,8 +49,6 @@ export default class SpeakerCarousel extends Component {
       ))
     )
   }
-
-
 
   render() {
     const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
@@ -67,6 +66,7 @@ export default class SpeakerCarousel extends Component {
         animate={false}
         indicatorOffset={10}
         height={this.state.height}
+        width={Dimensions.get('window').width}
         >
         {this.carouselCells()}    
         </Carousel>
@@ -96,7 +96,10 @@ const s = ReactNative.StyleSheet.create({
   },
   cell: {
     width: Dimensions.get('window').width,  
-    backgroundColor:'#E8E8E8'
+    backgroundColor:'#E8E8E8',
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center'
   },
   cellDes: {
     flex: 1, 
@@ -104,7 +107,8 @@ const s = ReactNative.StyleSheet.create({
     marginLeft: 15, 
     marginRight: 15, 
     marginBottom: 15, 
-    fontSize: 14
+    fontSize: 14,
+    color: '#364247'
   },
   image: {
     marginLeft: 15,
