@@ -20,6 +20,7 @@ import client, {Color} from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
 
 
 export default class SpeakerCarousel extends Component {
@@ -33,7 +34,7 @@ export default class SpeakerCarousel extends Component {
   carouselCells = () => {
     return(
       this.props.speakerInfo.map(((item, i) =>
-        <TouchableOpacity key={i} onPress={()=>this.linkCheck(item.URL)} style={s.cell} activeOpacity={1.0}>
+        <TouchableOpacity key={i} onPress={()=>linkCheck(item.URL)} style={s.cell} activeOpacity={1.0}>
           <View style={{flexDirection: 'row', paddingTop: 10}}>
             <Image source={{uri: item.image}} style={s.image}/>
             <View style={{flexDirection: 'column', marginRight: 15, flex: 1}}>
@@ -48,22 +49,6 @@ export default class SpeakerCarousel extends Component {
       ))
     )
   }
-
-  linkCheck = (string) => {
-    var link = string.trim()
-    if (link) {
-      Linking.canOpenURL(link).then(supported => {
-        if (!supported) {
-          Alert.alert('This link is unavailable')
-        } else {
-          Linking.openURL(link)
-        }
-      }).catch(err => Alert.alert('This link is unavailable'))
-    }
-    else Alert.alert('This link is unavailable')
-  }
-
-
 
   render() {
     const { footer, buttonURL, buttonText, header, title, des, intro } = this.props

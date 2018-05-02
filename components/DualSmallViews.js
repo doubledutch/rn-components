@@ -18,6 +18,7 @@ import React, { Component } from 'react'
 import ReactNative, { Text, View, Image, TouchableOpacity, Linking } from 'react-native'
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
 
 export default class DualSmallViews extends Component {
   render() {
@@ -53,21 +54,6 @@ export default class DualSmallViews extends Component {
       </View>
     )
   }
-
-  linkCheck = (string) => {
-    var link = string.trim()
-    if (link) {
-      Linking.canOpenURL(link).then(supported => {
-        if (!supported) {
-          Alert.alert('This link is unavailable')
-        } else {
-          Linking.openURL(link)
-        }
-      }).catch(err => Alert.alert('This link is unavailable'))
-    }
-    else Alert.alert('This link is unavailable')
-  }
-
 }
     
 const s = ReactNative.StyleSheet.create({

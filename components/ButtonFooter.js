@@ -17,6 +17,7 @@
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Linking, Alert } from 'react-native'
 import client, {Color} from '@doubledutch/rn-client'
+import { linkCheck } from './functionHelpers'
 
 export default class ButtonFooter extends Component {
   constructor(props) {
@@ -27,14 +28,14 @@ export default class ButtonFooter extends Component {
     return(
       <View style={s.container}>
         <TouchableOpacity onPress={()=>{
-          this.linkCheck(buttons[0].buttonURL)
+          linkCheck(buttons[0].buttonURL)
         }}>
           <View style={s.buttonBox}>
             <Text style={s.button}>{buttons[0].buttonTitle.trim()}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>
-          this.linkCheck(buttons[1].buttonURL)
+          linkCheck(buttons[1].buttonURL)
         } style={{marginTop:20}}>
           <View style={s.buttonBox}>
             <Text style={s.button}>{buttons[1].buttonTitle.trim()}</Text>
@@ -43,21 +44,6 @@ export default class ButtonFooter extends Component {
       </View>
     )
   }
-
-  linkCheck = (string) => {
-    var link = string.trim()
-    if (link) {
-      Linking.canOpenURL(link).then(supported => {
-        if (!supported) {
-          Alert.alert('This link is unavailable')
-        } else {
-          Linking.openURL(link)
-        }
-      }).catch(err => Alert.alert('This link is unavailable'))
-    }
-    else Alert.alert('This link is unavailable')
-  }
-
 }
 
 const s = ReactNative.StyleSheet.create({
