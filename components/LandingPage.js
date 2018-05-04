@@ -36,6 +36,7 @@ export default class LandingPage extends Component {
 
   viewPage = () => {
     const color = this.props.color || client.primaryColor
+    const fontColor = "#364247"
     const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro } = this.props
     if (bold){
       return(
