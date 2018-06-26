@@ -39,6 +39,10 @@ export default class ConfigurableScroll extends Component {
         return(
           <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
         )
+      case "Video Carousel" :
+        return(
+          <VideoCarousel {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
+        )
       case "Twitter Cell" :
         return(
           <Twitter {...details} key={i} />

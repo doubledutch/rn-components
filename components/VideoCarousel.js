@@ -1,98 +1,37 @@
-/*
- * Copyright 2018 DoubleDutch, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-import React, { Component } from 'react';
-import ReactNative, {Button, NativeEventEmitter, Platform} from 'react-native';
-import client, { Color } from '@doubledutch/rn-client'
+import React, { Component } from 'react'
+import ReactNative, { Text, View, Image, Dimensions, WebView, Platform, TouchableHighlight } from 'react-native'
+import Carousel from 'react-native-carousel-view';
 import YouTube, { YouTubeStandaloneAndroid } from 'react-native-youtube'
 import Video from 'react-native-video'
 import Footer from './Footer'
-const { TouchableOpacity, TouchableHighlight, Text, View, Image, WebView, Dimensions, Linking } = ReactNative
+import Header from './Header'
 
-export default class LandingPage extends Component {
+
+export default class VideoCarousel extends Component {
   constructor(props) {
-    super()
-    this.state = {}
+    super(props)
   }
 
-  render() {
-    return (
-      this.viewPage()
+  carouselCells = (width) => {
+    const dimensionStyle = {
+      width : width,
+      height : width * .931
+    }
+    return(
+      this.props.videoInfo.map(((item, i) =>                
+        <View key={i} style={[s.cell, dimensionStyle]} activeOpacity={1.0}>
+          {this.renderImage(item)}
+       </View> 
+      ))
     )
   }
 
-  viewPage = () => {
-    const color = this.props.color || client.primaryColor
-    const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro } = this.props
-    if (bold){
-      return(
-      <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
-        <View style={s.border}/>
-        <View style={{backgroundColor:'#00B9C2'}}>
-          <Text style={[s.headlineText, {color}]}>{headline}</Text>
-        </View>
-        {this.renderImage()}
-        <View style={s.box}>
-          {intro.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{intro}</Text> : null}
-          {title.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{title}</Text> : null}
-          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20, color: '#364247'}}>{des}</Text> : null}
-        </View>
-        <Footer
-          footer={footer}
-          buttonURL={buttonURL}
-          buttonText={buttonText}
-        />
-      </View>
-      )
-    }
-    else {
-      return (
-      <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
-        <View style={s.border}/>
-        <View style={s.box}>
-          {intro.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{intro}</Text> : null}
-          {title.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{title}</Text> : null}
-          {des.length ? <Text style={{textAlign:'center',fontSize:16,padding:20, color: '#364247'}}>{des}</Text> : null}
-        </View>
-        {this.renderImage()}
-        <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
-        />
-      </View>
-      )
-    }
-  }
-
-  renderImage = () => {
-    if (this.props.video){
-      return (
-        <View style={s.dimensionStyle}>
-          { this.props.excludeNativeComponents ? null : this.renderPlayer(this.props.video)}
-        </View>
-      )
-    }
-    if (this.props.image) {
-      return (
+  renderImage = (item) => {
+    return (
       <View style={s.dimensionStyle}>
-          <Image source={{uri: this.props.image}} style={{flex:1, resizeMode: 'contain'}}/>
+        { this.props.excludeNativeComponents ? null : this.renderPlayer(item.video)}
       </View>
-      )
-    }
+    )
   }
 
   onPressVideo = () => this.setState({paused: !this.state.paused })
@@ -125,6 +64,7 @@ export default class LandingPage extends Component {
         </TouchableHighlight>
       )
     } else {
+      console.log("ios")
       return (
         <YouTube
           videoId={videoId}        // The YouTube video ID
@@ -180,9 +120,56 @@ export default class LandingPage extends Component {
     }
     return this.renderYouTubePlayer('-xAFnaYDQa4')
   }
+  
+  render() {
+    const width = Dimensions.get('window').width
+    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    return (
+      <View style={s.component}>
+        <View style={s.top}/>
+        <Header
+        header = {header}
+        title = {title}
+        des = {des}
+        intro = {intro}
+        />
+        <Carousel
+        indicatorAtBottom={true}
+        animate={false}
+        indicatorOffset={0}
+        height={ width * .5625 + 25 }
+        >
+          {this.carouselCells(width)}    
+        </Carousel>
+        <Footer
+        footer={footer}
+        buttonURL={buttonURL}
+        buttonText={buttonText}
+        />
+      </View>
+    )
+  }
+
 }
 
 const s = ReactNative.StyleSheet.create({
+  cell: {
+    marginBottom: 25, 
+    backgroundColor:'#E8E8E8',
+  },
+  component: {
+    marginBottom: 0, 
+    borderColor:'#D8D8D8',
+    borderBottomWidth:1, 
+    backgroundColor: "white"
+  },
+  top: {
+    borderColor:'#D8D8D8',
+    borderBottomWidth:1, 
+    height: 25, 
+    flex: 1, 
+    backgroundColor:'#E8E8E8'
+  },
   container: {
     flex: 1
   }, 
@@ -223,7 +210,7 @@ const s = ReactNative.StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#000000',
     borderColor: 'black',
     borderWidth: 1,
   },
@@ -241,6 +228,10 @@ const s = ReactNative.StyleSheet.create({
     flexDirection: 'row', 
     flexGrow: 1,
     aspectRatio: 1.777,
-    justifyContent: 'center'
+    justifyContent: 'center',
   }
-})
+
+});
+
+
+
