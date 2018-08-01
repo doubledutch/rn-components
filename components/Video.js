@@ -15,11 +15,7 @@
  */
 
 import React, { Component } from 'react'
-import ReactNative, {TouchableOpacity, Text, View,
-  Image, TouchableHighlight,
-  Dimensions, Platform, WebView, Linking
-} from 'react-native'
-import client, {TitleBar, Color, Avatar} from '@doubledutch/rn-client'
+import {Text, View, Image, TouchableHighlight, Platform, WebView, StyleSheet} from 'react-native'
 import Video from 'react-native-video'
 import YouTube, { YouTubeStandaloneAndroid } from 'react-native-youtube'
 import Footer from './Footer'
@@ -49,14 +45,14 @@ export default class VideoView extends Component {
     if (Platform.OS === 'android') {
       return (
         <TouchableHighlight
-        style={{ flex: 1 }}
-        onPress={() => {
-        YouTubeStandaloneAndroid.playVideo({
-            apiKey: 'AIzaSyDO5L4KzrzG_2aiX6HWpTAR23xk5UcKTf8',
-            videoId: videoId,
-            autoplay: true
-        })
-        }}>
+          style={{ flex: 1 }}
+          onPress={() => {
+            YouTubeStandaloneAndroid.playVideo({
+              apiKey: this.props.apiKey,
+              videoId: videoId,
+              autoplay: true
+            })
+          }}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <Image
               source={{ uri: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` }}
@@ -98,18 +94,12 @@ export default class VideoView extends Component {
   
   renderVideoPlayer(url) {
     return (
-      <TouchableHighlight
-      ref={(ref) => {
-        console.log(ref)
-      }} style={{ flex: 1 }} onPress={() => this.videoRef.presentFullscreenPlayer()}>
-      <Video
-        ref={(ref) => {
-          console.log(ref)
-        }}
-        source={{ uri: url }}
-        style={styles.video}
-        paused={true}
-      />
+      <TouchableHighlight style={{ flex: 1 }} onPress={() => this.videoRef.presentFullscreenPlayer()}>
+        <Video
+          source={{ uri: url }}
+          style={styles.video}
+          paused={true}
+        />
       </TouchableHighlight>
     )
   }
@@ -131,32 +121,31 @@ export default class VideoView extends Component {
   }
   
 
-  render(){
+  render() {
     const { footer, buttonURL, buttonText, header, title, des, video, intro } = this.props
     return(
       <View style={styles.container}>
         <View style={{borderColor:'#D8D8D8',borderBottomWidth:1, height: 25, flex: 1}}/>
         <Header
-        header = {header}
-        title = {title}
-        des = {des}
-        intro = {intro}
+          header = {header}
+          title = {title}
+          des = {des}
+          intro = {intro}
         />
         <View style={styles.dimensionStyle}>
             {this.renderPlayer(video)}
         </View>
         <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
         />
       </View>
     )
   }
-
 }
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   video: {
     position: 'absolute',
     top: 0,

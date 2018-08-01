@@ -104,13 +104,13 @@ export default class LandingPage extends Component {
     if (Platform.OS === 'android') {
       return (
         <TouchableHighlight
-        style={{ flex: 1 }}
-        onPress={() => {
-        YouTubeStandaloneAndroid.playVideo({
-            apiKey: 'AIzaSyDO5L4KzrzG_2aiX6HWpTAR23xk5UcKTf8',
+          style={{ flex: 1 }}
+          onPress={() => {
+          YouTubeStandaloneAndroid.playVideo({
+            apiKey: this.props.youTubeApiKey,
             videoId: videoId,
             autoplay: true
-        })
+          })
         }}>
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                 <Image

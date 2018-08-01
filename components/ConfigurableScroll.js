@@ -16,8 +16,8 @@
 
 'use strict'
 import React, { Component } from 'react';
-import ReactNative, { Button, ScrollView, StyleSheet, View, Text } from 'react-native';
-import { SmallView, SpeakerCarousel, Footer, Header, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView} from './index'
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { SmallView, SpeakerCarousel, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView} from './index'
 
 export default class ConfigurableScroll extends Component {
 
@@ -37,7 +37,7 @@ export default class ConfigurableScroll extends Component {
     switch(details.type) {
       case "Landing Page Cell" :
         return(
-          <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
+          <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} youTubeApiKey={this.props.youTubeApiKey} />
         )
       case "Twitter Cell" :
         return(
@@ -85,7 +85,7 @@ export default class ConfigurableScroll extends Component {
         )
       case "Video Cell":
         return(
-          <VideoView {...details} key={i} />
+          <VideoView {...details} key={i} youTubeApiKey={this.props.youTubeApiKey} />
       )
     }
   }
