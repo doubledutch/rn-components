@@ -25,8 +25,8 @@ export default class ConfigurableScroll extends Component {
     const {componentConfigs} = this.props
     return (
       <View style={{ flex: 1, backgroundColor:'#E8E8E8' }}>
-        {(!componentConfigs.length) ? <Text>Loading...</Text> : null}
-        <ScrollView style={styles.container}>
+        {(!componentConfigs.length && !this.props.isLaunch) ? <Text>Loading...</Text> : null}
+        <ScrollView style={styles.container} onScroll={this.props.handleScroll}>
           { componentConfigs.map(this.getComponent) }
         </ScrollView>
       </View>
