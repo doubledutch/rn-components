@@ -178,6 +178,16 @@ const s = ReactNative.StyleSheet.create({
     justifyContent: 'center',
     flex: 1
   },
+  playButton: {
+    height: 80,
+    width: 80,
+    backgroundColor: 'rgba(170,170,170,0.6)',
+    zIndex: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 40
+  },
   playButtonText: {
     fontSize: 40,
     lineHeight: 32,
