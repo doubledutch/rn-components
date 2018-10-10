@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
-import client, {Color} from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'
@@ -52,33 +51,26 @@ export default class SpeakerCarousel extends Component {
 
   findHeight = () => {
     const width = Dimensions.get('window').width
-    var setHeight = 240
-    var string = 1
-    var speakerString = 1
-    const fontSize = 14
+    let setHeight = 240
+    let string = 1
     const fontConstant = 2
     const CPL = width / (14 / fontConstant)
     this.props.speakerInfo.forEach((item) => {
-      const totalSpeaker = item.title + item.company
       if (item.des.length > string) {
         string = item.des.length
       }
     })
     const lines = Math.round(string / CPL + 0.5)
-    setHeight = (lines) * 18 + 128
+    setHeight = lines * 18 + 128
     return setHeight
   }
 
   findLines = () => {
     const width = 286
-    var setHeight = 240
-    var string = 1
-    var speakerString = 1
-    const fontSize = 14
+    let string = 1
     const fontConstant = 2
     const CPL = width / (14 / fontConstant)
     this.props.speakerInfo.forEach((item) => {
-      const totalSpeaker = item.title + item.company
       if (item.des.length > string) {
         string = item.des.length
       }
