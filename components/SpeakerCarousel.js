@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
-import client, {Color} from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'
@@ -31,7 +30,7 @@ export default class SpeakerCarousel extends Component {
     }
   }
 
-  carouselCells = () => {
+  carouselCells = (maxLines) => {
     return(
       this.props.speakerInfo.map(((item, i) =>
         <TouchableOpacity key={i} onPress={()=>linkCheck(item.URL)} style={s.cell} activeOpacity={1.0}>
@@ -39,19 +38,51 @@ export default class SpeakerCarousel extends Component {
             <Image source={{uri: item.image}} style={s.image}/>
             <View style={{flexDirection: 'column', marginRight: 15, flex: 1}}>
               <Text style={{fontSize: 24, marginLeft: 20, marginTop: 5, color: '#364247'}}>{item.name}</Text>
-              <Text style={{fontSize: 16, marginLeft: 20, marginTop: 0, color: '#364247'}}>{item.title}{(item.company && item.title) ? "," : null} {item.company}</Text>
+              <Text numberOfLines={2} style={{fontSize: 16, marginLeft: 20, marginTop: 0, color: '#364247'}}>{item.title}{(item.company && item.title) ? "," : null} {item.company}</Text>
             </View>
           </View>
           <View style={{flex: 1}}>
-            <Text style={s.cellDes}>{item.des}</Text>
+            <Text numberOfLines={maxLines}  style={s.cellDes}>{item.des}</Text>
           </View>
         </TouchableOpacity>     
       ))
     )
   }
 
+  findHeight = () => {
+    const width = Dimensions.get('window').width
+    let setHeight = 240
+    let string = 1
+    const fontConstant = 2
+    const CPL = width / (14 / fontConstant)
+    this.props.speakerInfo.forEach((item) => {
+      if (item.des.length > string) {
+        string = item.des.length
+      }
+    })
+    const lines = Math.round(string / CPL + 0.5)
+    setHeight = lines * 18 + 128
+    return setHeight
+  }
+
+  findLines = () => {
+    const width = 286
+    let string = 1
+    const fontConstant = 2
+    const CPL = width / (14 / fontConstant)
+    this.props.speakerInfo.forEach((item) => {
+      if (item.des.length > string) {
+        string = item.des.length
+      }
+    })
+    const lines = Math.round(string / CPL + 0.5)
+    return lines
+  }
+
+
   render() {
     const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const maxLines = this.findLines()
     return (
       <View style={s.container}>
         <View style={s.border}/>
@@ -65,10 +96,10 @@ export default class SpeakerCarousel extends Component {
         indicatorAtBottom={true}
         animate={false}
         indicatorOffset={10}
-        height={this.state.height}
+        height={this.findHeight()}
         width={Dimensions.get('window').width}
         >
-        {this.carouselCells()}    
+        {this.carouselCells(maxLines)}    
         </Carousel>
         <Footer
         footer={footer}
