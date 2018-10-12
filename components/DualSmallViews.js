@@ -39,7 +39,7 @@ export default class DualSmallViews extends Component {
             <Text style={s.description}>{des1}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={linkCheck(url2)} style={s.main2}>
+        <TouchableOpacity onPress={()=>linkCheck(url2)} style={s.main2}>
           <Image style={s.image} source={{uri: image2}} />
           <View style={s.info}>
             <Text style={s.title}>{title2}</Text>
