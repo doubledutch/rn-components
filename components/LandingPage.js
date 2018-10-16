@@ -109,7 +109,8 @@ export default class LandingPage extends Component {
           YouTubeStandaloneAndroid.playVideo({
             apiKey: this.props.youTubeApiKey,
             videoId: videoId,
-            autoplay: true
+            lightboxMode: true,
+            autoplay: false
           })
         }}>
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
