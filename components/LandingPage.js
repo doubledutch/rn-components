@@ -110,7 +110,7 @@ export default class LandingPage extends Component {
             apiKey: this.props.youTubeApiKey,
             videoId: videoId,
             lightboxMode: true,
-            autoplay: false
+            autoplay: true
           })
         }}>
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
