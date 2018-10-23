@@ -109,6 +109,7 @@ export default class LandingPage extends Component {
           YouTubeStandaloneAndroid.playVideo({
             apiKey: this.props.youTubeApiKey,
             videoId: videoId,
+            lightboxMode: true,
             autoplay: true
           })
         }}>

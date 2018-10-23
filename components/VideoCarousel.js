@@ -48,6 +48,7 @@ export default class VideoCarousel extends Component {
         YouTubeStandaloneAndroid.playVideo({
             apiKey: 'AIzaSyDO5L4KzrzG_2aiX6HWpTAR23xk5UcKTf8',
             videoId: videoId,
+            lightboxMode: true,
             autoplay: true
         })
         }}>

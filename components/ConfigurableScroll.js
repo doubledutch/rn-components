@@ -17,7 +17,7 @@
 'use strict'
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import { SmallView, SpeakerCarousel, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView} from './index'
+import { SmallView, SpeakerCarousel, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView, VideoCarousel} from './index'
 
 export default class ConfigurableScroll extends Component {
 
