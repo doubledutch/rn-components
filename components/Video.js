@@ -48,7 +48,7 @@ export default class VideoView extends Component {
           style={{ flex: 1 }}
           onPress={() => {
             YouTubeStandaloneAndroid.playVideo({
-              apiKey: this.props.apiKey,
+              apiKey: this.props.youTubeApiKey,
               videoId: videoId,
               autoplay: true
             })

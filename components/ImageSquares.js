@@ -27,12 +27,11 @@ export default class ImageSquares extends Component {
   }
 
   render(){
-    const width = Dimensions.get('window').width / 2 - 20
+    const width = Dimensions.get('window').width / 2 - 15
     const height = width
     const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, intro } = this.props
       return (
         <View style={s.component}>
-          <View style={s.top}/>
           <Header
           header = {header}
           title = {title}
@@ -41,18 +40,20 @@ export default class ImageSquares extends Component {
           />
           <View style={s.box}>
             <View style={{flexDirection:'row'}}>
-              <View style={s.imageBoxLeft}>
+              <View style={[s.imageBoxTop, {alignSelf: "flex-start"}]}>
                 <Image style={{width, height}} source={{uri: image1}}/>
               </View>
-              <View style={s.imageBoxRight}>
+              <View style={{flex: 1}}/>
+              <View style={s.imageBoxTop}>
                 <Image style={{width, height}} source={{uri: image2}}/>
               </View>   
             </View>
             <View style={s.lowerRow}>
-              <View style={s.imageBoxLeft}>
+              <View style={s.imageBoxBottom}>
                 <Image style={{width, height}} source={{uri: image3}}/>
               </View>
-              <View style={s.imageBoxRight}>
+              <View style={{flex: 1}}/>
+              <View style={s.imageBoxBottom}>
                 <Image style={{width, height}} source={{uri: image4}}/>
               </View>
             </View>
@@ -69,43 +70,38 @@ export default class ImageSquares extends Component {
 
 
 const s = ReactNative.StyleSheet.create({
-    component: {
-        padding: 0, 
-        borderColor:'#D8D8D8',
-        borderBottomWidth: 1
-    },
+  component: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
+  },
+  top: {
+    borderColor:'#D8D8D8',
+    borderBottomWidth:1, 
+    height: 25, 
+    flex: 1
+  },
+  box: {
+    backgroundColor:'#FFFFFF',
+    borderTopWidth:1,
+    borderColor:'#D8D8D8'
+  },
+  imageBoxTop: {
+    paddingBottom:10,
+    alignItems:'center'
+  },
 
-    top: {
-        borderColor:'#D8D8D8',
-        borderBottomWidth:1, 
-        height: 25, 
-        flex: 1
-    },
-
-    box: {
-        backgroundColor:'#FFFFFF',
-        borderTopWidth:1,
-        borderBottomWidth:1,
-        borderColor:'#D8D8D8'
-    },
-
-    imageBoxLeft: {
-        borderRightWidth:1,
-        borderColor:'#D8D8D8',
-        flex:1,
-        padding:10,
-        alignItems:'center'
-    },
-
-    lowerRow: {
-        flexDirection:'row',
-        borderTopWidth:1,
-        borderColor:'#D8D8D8'
-    },
-    imageBoxRight: {
-        flex:1,
-        padding:10,
-        alignItems:'center'
-    }
-  
-  });
+  lowerRow: {
+    flexDirection:'row',
+    borderColor:'#D8D8D8'
+  },
+  imageBoxBottom: {
+    alignItems:'center'
+  }
+});

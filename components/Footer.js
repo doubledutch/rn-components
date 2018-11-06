@@ -50,8 +50,8 @@ export default class Footer extends Component {
 const s = ReactNative.StyleSheet.create({
   footerButton : {
     backgroundColor: client.primaryColor,
-    borderRadius:4,
-    padding:10, 
+    borderRadius:20,
+    padding:15, 
     margin: 20, 
   },
   footerButtonText : {

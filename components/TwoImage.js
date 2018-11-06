@@ -16,31 +16,43 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
-import client, { Color } from '@doubledutch/rn-client'
 import Footer from './Footer'
 import Header from './Header'
 
 
 export default class TwoImage extends Component {
   constructor(props) {
-      super(props)
+    super(props)
+    this.state = {
+      aspectRatio: 1,
+      aspectRatioBottom: 1
+    }
+  }
+
+  componentDidMount() {
+    this.getImageSize("aspectRatio", this.props.imageInfo[0].image)
+    this.getImageSize("aspectRatioBottom", this.props.imageInfo[1].image)
+  }
+
+  getImageSize = (variable, image) => {
+    Image.getSize(image, (width, height) => {
+      let newAspectRatio = width/height
+      this.setState({[variable]: newAspectRatio})
+    })
   }
   
   render(){
-
     const { footer, buttonURL, buttonText, header, title, des, imageInfo, intro } = this.props
-
     return(
       <View style={s.container}>
-        <View style={s.border}/>
         <Header
         header = {header}
         title = {title}
         des = {des}
         intro = {intro}
         />
-        <Image source={{uri: imageInfo[0].image}} style={s.dimensionStyle}/>
-        <Image source={{uri: imageInfo[1].image}} style={s.dimensionStyle1}/>
+        <Image source={{uri: imageInfo[0].image}} style={[s.dimensionStyle, {aspectRatio: this.state.aspectRatio}]}/>
+        <Image source={{uri: imageInfo[1].image}} style={[s.dimensionStyle1, {aspectRatio: this.state.aspectRatioBottom} ]}/>
         <Footer
         footer={footer}
         buttonURL={buttonURL}
@@ -55,9 +67,14 @@ export default class TwoImage extends Component {
 
 const s = ReactNative.StyleSheet.create({
   container : {
-    padding: 0, 
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1, 
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden',
     backgroundColor: "#FFFFFF"
   },
   border : {
@@ -68,19 +85,15 @@ const s = ReactNative.StyleSheet.create({
     backgroundColor: "#E8E8E8"
   },
   dimensionStyle : {
-    flexDirection: "row", 
-    flexGrow: 1,
-    aspectRatio: 2.0165,
     justifyContent: 'center',
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    backgroundColor: "blue"
   },
   dimensionStyle1 : {
-    flexDirection: "row", 
-    flexGrow: 1,
-    aspectRatio: 2.0165,
     justifyContent: 'center',
     marginTop: 10,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    backgroundColor: "red"
   }
     
 });
