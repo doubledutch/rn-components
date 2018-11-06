@@ -44,16 +44,16 @@ export default class ImageSquares extends Component {
                 <Image style={{width, height}} source={{uri: image1}}/>
               </TouchableOpacity>
               <View style={{flex: 1}}/>
-              <TouchableOpacity onPress={()=>linkCheck(url1 || "")} style={s.imageBoxTop}>
+              <TouchableOpacity onPress={()=>linkCheck(url2 || "")} style={s.imageBoxTop}>
                 <Image style={{width, height}} source={{uri: image2}}/>
               </TouchableOpacity>   
             </View>
             <View style={s.lowerRow}>
-              <TouchableOpacity onPress={()=>linkCheck(url1 || "")} style={s.imageBoxBottom}>
+              <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.imageBoxBottom}>
                 <Image style={{width, height}} source={{uri: image3}}/>
               </TouchableOpacity>
               <View style={{flex: 1}}/>
-              <TouchableOpacity onPress={()=>linkCheck(url1 || "")} style={s.imageBoxBottom}>
+              <TouchableOpacity onPress={()=>linkCheck(url4 || "")} style={s.imageBoxBottom}>
                 <Image style={{width, height}} source={{uri: image4}}/>
               </TouchableOpacity>
             </View>

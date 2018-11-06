@@ -66,7 +66,7 @@ export default class Squares extends Component {
               <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text3}</Text>
             </TouchableOpacity>
             <View style={{flex: 1}}/>
-            <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.cellRight}>
+            <TouchableOpacity onPress={()=>linkCheck(url4 || "")} style={s.cellRight}>
               <Image style={{width, aspectRatio}} source={{uri: image4}}/>
               <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text4}</Text>
             </TouchableOpacity>
