@@ -17,14 +17,14 @@
 'use strict'
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import { SmallView, SpeakerCarousel, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView, VideoCarousel} from './index'
+import { SmallView, SpeakerCarousel, LandingPage, ButtonFooter, ImageSquares, ImageCarousel, TwoImage, OneImage, Squares, TextView, DualSmallViews, Twitter, VideoView, VideoCarousel, SquaresRow} from './index'
 
 export default class ConfigurableScroll extends Component {
 
   render() {
     const {componentConfigs} = this.props
     return (
-      <View style={{ flex: 1, backgroundColor:'#E8E8E8' }}>
+      <View style={{ flex: 1, backgroundColor:'#E8E8E8', paddingLeft: 10, paddingRight: 10 }}>
         {(!componentConfigs.length && !this.props.isLaunch) ? <Text>Loading...</Text> : null}
         <ScrollView style={styles.container} onScroll={this.props.handleScroll}>
           { componentConfigs.map(this.getComponent) }
@@ -58,6 +58,10 @@ export default class ConfigurableScroll extends Component {
       case "Squares Cell":
         return(
           <ImageSquares {...details} key={i} />
+        )
+      case "Squares Row":
+        return(
+          <SquaresRow {...details} key={i} />
         )
       case "Text Squares Cell":
         return(

@@ -38,7 +38,7 @@ export default class Squares extends Component {
 
   render() {
     const width = Dimensions.get('window').width / 2 - 15
-    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, text, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, text, intro, url1, url2, url3, url4 } = this.props
     const { aspectRatio } = this.state
     return (
       <View style={s.container}>
@@ -50,26 +50,26 @@ export default class Squares extends Component {
         />
         <View style={s.squareContainer}>
           <View style={{flexDirection:'row', marginBottom: 10}}>
-            <View style={s.cellLeft}>
+            <TouchableOpacity onPress={()=>linkCheck(url1 || "")} style={s.cellLeft}>
               <Image style={{width, aspectRatio}} source={{uri: image1}}/>
               <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text1}</Text>
-            </View>
+            </TouchableOpacity>
             <View style={{flex: 1}}/>
-            <View style={s.cellRight}>
+            <TouchableOpacity onPress={()=>linkCheck(url2 || "")} style={s.cellRight}>
               <Image style={{width, aspectRatio}} source={{uri: image2}}/>
               <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text2}</Text>
-            </View>   
+            </TouchableOpacity>  
           </View>
           <View style={{flexDirection:'row', marginBottom: 10}}>
-            <View style={s.cellLeft}>
+            <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.cellLeft}>
               <Image style={{width, aspectRatio}} source={{uri: image3}}/>
               <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text3}</Text>
-            </View>
+            </TouchableOpacity>
             <View style={{flex: 1}}/>
-            <View style={s.cellRight}>
+            <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.cellRight}>
               <Image style={{width, aspectRatio}} source={{uri: image4}}/>
               <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text4}</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         <Footer
@@ -107,13 +107,9 @@ const s = ReactNative.StyleSheet.create({
     borderColor:'#D8D8D8'
   },
   cellLeft: {
-    // flex:1,
-    // padding:15,
     alignItems:'center'
   },
   cellRight: {
-    // flex:1,
-    // padding:15,
     alignItems:'center'
   }
 });
