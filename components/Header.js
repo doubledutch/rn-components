@@ -39,7 +39,7 @@ export default class Header extends Component {
       else {
         return (
           <View style={{backgroundColor: 'white'}}>
-            {title.length ? <Text style={s.header2}>{title}</Text> : null}
+            {title.trim().length ? <Text style={s.header2}>{title}</Text> : null}
           </View>
         )
       }

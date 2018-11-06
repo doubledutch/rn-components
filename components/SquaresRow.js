@@ -16,20 +16,20 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
-import client, {Color} from '@doubledutch/rn-client'
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
 
 
-export default class ImageSquares extends Component {
+export default class SquaresRow extends Component {
   constructor(props) {
       super(props)
   }
 
   render(){
-    const width = Dimensions.get('window').width / 2 - 15
+    const width = Dimensions.get('window').width / 3 - 20
     const height = width
-    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, intro, url1, url2, url3, url4 } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, intro, url1, url2, url3 } = this.props
       return (
         <View style={s.component}>
           <Header
@@ -41,20 +41,15 @@ export default class ImageSquares extends Component {
           <View style={s.box}>
             <View style={{flexDirection:'row'}}>
               <TouchableOpacity onPress={()=>linkCheck(url1 || "")} style={[s.imageBoxTop, {alignSelf: "flex-start"}]}>
-                <Image style={{width, height}} source={{uri: image1}}/>
+                <Image style={{width, height}} source={{uri: image1}} alt=""/>
               </TouchableOpacity>
               <View style={{flex: 1}}/>
               <TouchableOpacity onPress={()=>linkCheck(url2 || "")} style={s.imageBoxTop}>
-                <Image style={{width, height}} source={{uri: image2}}/>
+                <Image style={{width, height}} source={{uri: image2}} alt=""/>
               </TouchableOpacity>   
-            </View>
-            <View style={s.lowerRow}>
-              <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.imageBoxBottom}>
-                <Image style={{width, height}} source={{uri: image3}}/>
-              </TouchableOpacity>
               <View style={{flex: 1}}/>
-              <TouchableOpacity onPress={()=>linkCheck(url4 || "")} style={s.imageBoxBottom}>
-                <Image style={{width, height}} source={{uri: image4}}/>
+              <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.imageBoxBottom}>
+                <Image style={{width, height}} source={{uri: image3}} alt=""/>
               </TouchableOpacity>
             </View>
           </View>
@@ -90,13 +85,11 @@ const s = ReactNative.StyleSheet.create({
   box: {
     backgroundColor:'#FFFFFF',
     borderTopWidth:1,
-    borderColor:'#D8D8D8'
+    borderColor:'#D8D8D8',
   },
   imageBoxTop: {
-    paddingBottom:10,
     alignItems:'center'
   },
-
   lowerRow: {
     flexDirection:'row',
     borderColor:'#D8D8D8'
