@@ -21,8 +21,7 @@ export default class SmallView extends Component {
   render() {
     const { image, title, description } = this.props
     return(
-      <View>
-        <View style={s.top} />
+      <View style={s.container}>
         <View style={s.main}>
           <Image style={s.image} source={{uri: image}} />
           <View style={s.info}>
@@ -36,6 +35,17 @@ export default class SmallView extends Component {
 }
     
 const s = ReactNative.StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
+  },
   top: {
     borderColor:'#D8D8D8',
     borderBottomWidth:1,

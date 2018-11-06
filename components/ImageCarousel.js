@@ -27,12 +27,22 @@ import { linkCheck } from './functionHelpers'
 export default class ImageCarousel extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      aspectRatio: 1,
+      height: 100
+    }
   }
 
-  carouselCells = (width) => {
+  componentDidMount() {
+    Image.getSize(this.props.imageInfo[0].image, (width, height) => {
+      let aspectRatio = width/height
+      this.setState({aspectRatio})
+    })
+  }
+
+  carouselCells = () => {
     const dimensionStyle = {
-      width : width,
-      height : width * .931
+      aspectRatio: this.state.aspectRatio
     }
     return(
       this.props.imageInfo.map(((item, i) =>                
@@ -44,11 +54,10 @@ export default class ImageCarousel extends Component {
   }
   
   render() {
-    const width = Dimensions.get('window').width
+    const height = (Dimensions.get('window').width / this.state.aspectRatio) + 25
     const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
     return (
       <View style={s.component}>
-        <View style={s.top}/>
         <Header
         header = {header}
         title = {title}
@@ -59,9 +68,9 @@ export default class ImageCarousel extends Component {
         indicatorAtBottom={true}
         animate={false}
         indicatorOffset={0}
-        height={ width * .931 + 25 }
+        height={ height }
         >
-          {this.carouselCells(width)}    
+          {this.carouselCells()}    
         </Carousel>
         <Footer
         footer={footer}
@@ -77,13 +86,18 @@ export default class ImageCarousel extends Component {
 const s = ReactNative.StyleSheet.create({
   cell: {
     marginBottom: 25, 
-    backgroundColor:'#E8E8E8',
+    backgroundColor:'white',
   },
-  component: {
-    marginBottom: 0, 
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1, 
-    backgroundColor: "white"
+  component: { 
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
   },
   top: {
     borderColor:'#D8D8D8',

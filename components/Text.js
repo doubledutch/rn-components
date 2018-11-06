@@ -29,7 +29,6 @@ export default class TextView extends Component {
     const { footer, buttonURL, buttonText, header, title, des, content, intro } = this.props
     return(
       <View style={s.container}>
-        <View style={s.border}/>
         <Header
         header = {header}
         title = {title}
@@ -50,11 +49,15 @@ export default class TextView extends Component {
 
 const s = ReactNative.StyleSheet.create({
   container : {
-    flex: 1, 
-    padding: 0, 
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1, 
-    backgroundColor: '#FFFFFF'
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
   },
   border : {
     borderColor:'#D8D8D8',

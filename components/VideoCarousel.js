@@ -46,7 +46,7 @@ export default class VideoCarousel extends Component {
         style={{ flex: 1 }}
         onPress={() => {
         YouTubeStandaloneAndroid.playVideo({
-            apiKey: 'AIzaSyDO5L4KzrzG_2aiX6HWpTAR23xk5UcKTf8',
+            apiKey: this.props.youTubeApiKey,
             videoId: videoId,
             lightboxMode: true,
             autoplay: true
@@ -127,7 +127,6 @@ export default class VideoCarousel extends Component {
     const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
     return (
       <View style={s.component}>
-        <View style={s.top}/>
         <Header
         header = {header}
         title = {title}
@@ -156,13 +155,18 @@ export default class VideoCarousel extends Component {
 const s = ReactNative.StyleSheet.create({
   cell: {
     marginBottom: 25, 
-    backgroundColor:'#E8E8E8',
+    backgroundColor: "white",
   },
   component: {
-    marginBottom: 0, 
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1, 
-    backgroundColor: "white"
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
   },
   top: {
     borderColor:'#D8D8D8',

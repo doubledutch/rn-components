@@ -24,22 +24,30 @@ export default class OneImage extends Component {
   constructor(props) {
       super(props)
       this.state = {
-        userColor: client.primaryColor
+        userColor: client.primaryColor,
+        aspectRatio: 1
       }
+  }
+
+  componentDidMount() {
+    Image.getSize(this.props.imageInfo.image, (width, height) => {
+      let aspectRatio = width/height
+      this.setState({aspectRatio})
+    })
   }
   
   render(){
     const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const { aspectRatio } = this.state
     return(
       <View style={s.container}>
-        <View style={s.border}/>
         <Header
         header = {header}
         title = {title}
         des = {des}
         intro = {intro}
         />
-        <Image source={{uri: this.props.imageInfo.image}} style={s.dimensionStyle}/>
+        <Image source={{uri: this.props.imageInfo.image}} style={[s.dimensionStyle, {aspectRatio}]}/>
         <Footer
         footer={footer}
         buttonURL={buttonURL}
@@ -54,9 +62,15 @@ export default class OneImage extends Component {
 
 const s = ReactNative.StyleSheet.create({
   container : {
-    padding: 0, 
-    borderColor:'#D8D8D8',
-    borderBottomWidth:1,
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
   },
   border : {
     borderColor:'#D8D8D8',
@@ -65,9 +79,6 @@ const s = ReactNative.StyleSheet.create({
     flex: 1  
   },
   dimensionStyle : {
-    flexDirection: "row", 
-    flexGrow: 1,
-    aspectRatio: 1.074,
     justifyContent: 'center',
     backgroundColor:'#FFFFFF',
     resizeMode: 'contain',

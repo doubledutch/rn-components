@@ -85,7 +85,6 @@ export default class SpeakerCarousel extends Component {
     const maxLines = this.findLines()
     return (
       <View style={s.container}>
-        <View style={s.border}/>
         <Header
         header = {header}
         title = {title}
@@ -113,10 +112,16 @@ export default class SpeakerCarousel extends Component {
 
 const s = ReactNative.StyleSheet.create({
   container: {
-    marginBottom: 0, 
-    borderColor:'#D8D8D8', 
-    borderBottomWidth:1, 
-    backgroundColor: "#ffffff"
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden',
+    backgroundColor: "#ffffff",
+    
   },
   border: {
     borderColor:'#D8D8D8',

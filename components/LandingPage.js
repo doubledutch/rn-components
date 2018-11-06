@@ -39,8 +39,7 @@ export default class LandingPage extends Component {
     const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro } = this.props
     if (bold){
       return(
-      <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
-        <View style={s.border}/>
+      <View style={s.container}>
         <View style={{backgroundColor:'#00B9C2'}}>
           <Text style={[s.headlineText, {color}]}>{headline}</Text>
         </View>
@@ -60,8 +59,7 @@ export default class LandingPage extends Component {
     }
     else {
       return (
-      <View style={{borderBottomWidth:1, borderColor:'#D8D8D8'}}>
-        <View style={s.border}/>
+      <View style={s.container}>
         <View style={s.box}>
           {intro.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{intro}</Text> : null}
           {title.length ? <Text style={{textAlign:'center',fontSize:25, color: '#364247'}}>{title}</Text> : null}
@@ -113,16 +111,16 @@ export default class LandingPage extends Component {
             autoplay: true
           })
         }}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                <Image
-                source={{ uri: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` }}
-                resizeMode='cover'
-                style={ s.video }
-                />
-                <View style={ s.playButton }>
-                    <Text style={ s.playButtonText }>▶</Text>
-                </View>
-            </View>
+          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+              source={{ uri: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` }}
+              resizeMode='cover'
+              style={ s.video }
+              />
+              <View style={ s.playButton }>
+                  <Text style={ s.playButtonText }>▶</Text>
+              </View>
+          </View>
         </TouchableHighlight>
       )
     } else {
@@ -185,7 +183,14 @@ export default class LandingPage extends Component {
 
 const s = ReactNative.StyleSheet.create({
   container: {
-    flex: 1
+    borderRadius: 10,
+    shadowOffset: { height: 5, width: 0 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 5,
+    marginTop: 25,
+    overflow: 'hidden'
   }, 
   videoButton: {
     alignItems: 'center',
@@ -240,7 +245,7 @@ const s = ReactNative.StyleSheet.create({
   },
   box: {
     backgroundColor:'#FFFFFF',
-    padding:20
+    padding:20,
   },
   border : {
     borderColor:'#D8D8D8',

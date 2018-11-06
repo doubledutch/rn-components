@@ -48,12 +48,13 @@ export default class ButtonFooter extends Component {
 
 const s = ReactNative.StyleSheet.create({
   container: {
-    padding: 20
+    paddingTop: 20,
+    paddingBottom: 20
   },
   buttonBox: {
     backgroundColor: client.primaryColor,
-    borderRadius:4,
-    padding:10
+    borderRadius:20,
+    padding:15
   },
   button: {
     color: "#FFFFFF",
