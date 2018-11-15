@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, WebView, Linking, Alert } from 'react-native'
-import client, { Color } from '@doubledutch/rn-client'
 import Carousel from 'react-native-carousel-view';
 import Footer from './Footer'
 import Header from './Header'

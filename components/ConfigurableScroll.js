@@ -34,66 +34,67 @@ export default class ConfigurableScroll extends Component {
   }
 
   getComponent = (details, i) => {
+    const color = this.props.color || "#000000"
     switch(details.type) {
       case "Landing Page Cell" :
         return(
-          <LandingPage {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} youTubeApiKey={this.props.youTubeApiKey} />
+          <LandingPage {...details} color={color} excludeNativeComponents={this.props.excludeNativeComponents} key={i} youTubeApiKey={this.props.youTubeApiKey} />
         )
       case "Video Carousel" :
         return(
-          <VideoCarousel {...details} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
+          <VideoCarousel {...details} color={color} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
         )
       case "Twitter Cell" :
         return(
-          <Twitter {...details} key={i} />
+          <Twitter {...details} color={color} key={i} />
         )
       case 'Details Cell':
         return( 
-          <SmallView {...details} key={i} />
+          <SmallView {...details} color={color} key={i} />
         )
       case "Dual Details Cell" :
         return(
-          <DualSmallViews {...details} key={i}/>
+          <DualSmallViews {...details} color={color} key={i}/>
       )
       case "Squares Cell":
         return(
-          <ImageSquares {...details} key={i} />
+          <ImageSquares {...details} color={color} key={i} />
         )
       case "Squares Row":
         return(
-          <SquaresRow {...details} key={i} />
+          <SquaresRow {...details} color={color} key={i} />
         )
       case "Text Squares Cell":
         return(
-          <Squares {...details} key={i} />
+          <Squares {...details} color={color} key={i} />
         )
       case "Image Carousel":
         return(
-          <ImageCarousel {...details} key={i} />
+          <ImageCarousel {...details} color={color} key={i} />
         )
       case "Speaker Highlight Cell":
         return(
-          <SpeakerCarousel {...details} key={i} />
+          <SpeakerCarousel {...details} color={color} key={i} />
         )
       case "Image Cell":
         return(
-          <OneImage {...details} key={i} />
+          <OneImage {...details} color={color} key={i} />
         )
       case "Dual Images Cell":
         return(
-          <TwoImage {...details} key={i} />
+          <TwoImage {...details} color={color} key={i} />
         )
       case "Text Cell":
         return(
-          <TextView {...details} key={i} />
+          <TextView {...details} color={color} key={i} />
         )
       case "Footer Cell":
         return(
-          <ButtonFooter {...details} key={i} />
+          <ButtonFooter {...details} color={color} key={i} />
         )
       case "Video Cell":
         return(
-          <VideoView {...details} key={i} youTubeApiKey={this.props.youTubeApiKey} />
+          <VideoView {...details} key={i} color={color} youTubeApiKey={this.props.youTubeApiKey} />
       )
     }
   }

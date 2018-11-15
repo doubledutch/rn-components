@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Linking, Alert } from 'react-native'
-import client, { Color } from '@doubledutch/rn-client'
 import { linkCheck } from './functionHelpers'
 
 
@@ -27,11 +26,12 @@ export default class Footer extends Component {
 
   render() {
     const { footer, buttonURL, buttonText } = this.props
+    const background = {backgroundColor: color}
     if (footer) {
       return (
         <View style={{backgroundColor: 'white'}}>
           <TouchableOpacity onPress={()=>linkCheck(buttonURL)} style={{marginTop:0}}>
-            <View style={s.footerButton}>
+            <View style={[s.footerButton, background]}>
               <Text style={s.footerButtonText}>{buttonText.trim()}</Text>
             </View>
           </TouchableOpacity>
@@ -49,7 +49,6 @@ export default class Footer extends Component {
 
 const s = ReactNative.StyleSheet.create({
   footerButton : {
-    backgroundColor: client.primaryColor,
     borderRadius:20,
     padding:15, 
     margin: 20, 

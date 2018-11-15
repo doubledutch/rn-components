@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react';
 import ReactNative, {Button, NativeEventEmitter, Platform} from 'react-native';
-import client, { Color } from '@doubledutch/rn-client'
 import YouTube, { YouTubeStandaloneAndroid } from 'react-native-youtube'
 import Video from 'react-native-video'
 import Footer from './Footer'
@@ -35,7 +34,7 @@ export default class LandingPage extends Component {
   }
 
   viewPage = () => {
-    const color = this.props.color || client.primaryColor
+    const color = this.props.color
     const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro } = this.props
     if (bold){
       return(
