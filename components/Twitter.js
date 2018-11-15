@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Linking, WebView } from 'react-native'
-import client, { Color } from '@doubledutch/rn-client'
 
 export default class Twitter extends Component {
   constructor(props) {

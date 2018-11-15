@@ -16,7 +16,6 @@
 
 import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Linking, Alert } from 'react-native'
-import client, {Color} from '@doubledutch/rn-client'
 import { linkCheck } from './functionHelpers'
 
 export default class ButtonFooter extends Component {
@@ -24,20 +23,21 @@ export default class ButtonFooter extends Component {
     super(props)
   }
   render(){
-    const { buttons } = this.props
+    const { buttons, color } = this.props
+    const background = {backgroundColor: color}
     return(
       <View style={s.container}>
         <TouchableOpacity onPress={()=>{
           linkCheck(buttons[0].buttonURL)
         }}>
-          <View style={s.buttonBox}>
+          <View style={[s.buttonBox, background]}>
             <Text style={s.button}>{buttons[0].buttonTitle.trim()}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>
           linkCheck(buttons[1].buttonURL)
         } style={{marginTop:20}}>
-          <View style={s.buttonBox}>
+          <View style={[s.buttonBox, background]}>
             <Text style={s.button}>{buttons[1].buttonTitle.trim()}</Text>
           </View>
         </TouchableOpacity>
@@ -52,7 +52,6 @@ const s = ReactNative.StyleSheet.create({
     paddingBottom: 20
   },
   buttonBox: {
-    backgroundColor: client.primaryColor,
     borderRadius:20,
     padding:15
   },
