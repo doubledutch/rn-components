@@ -42,7 +42,7 @@ export default class ConfigurableScroll extends Component {
         )
       case "Video Carousel" :
         return(
-          <VideoCarousel {...details} color={color} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
+          <VideoCarousel {...details} color={color} youTubeApiKey={this.props.youTubeApiKey} excludeNativeComponents={this.props.excludeNativeComponents} key={i} />
         )
       case "Twitter Cell" :
         return(
