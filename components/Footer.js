@@ -25,7 +25,7 @@ export default class Footer extends Component {
   }
 
   render() {
-    const { footer, buttonURL, buttonText } = this.props
+    const { footer, buttonURL, buttonText, color } = this.props
     const background = {backgroundColor: color}
     if (footer) {
       return (

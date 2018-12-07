@@ -87,13 +87,13 @@ const s = ReactNative.StyleSheet.create({
   dimensionStyle : {
     justifyContent: 'center',
     resizeMode: 'contain',
-    backgroundColor: "blue"
+    backgroundColor: "#FFFFFF"
   },
   dimensionStyle1 : {
     justifyContent: 'center',
     marginTop: 10,
     resizeMode: 'contain',
-    backgroundColor: "red"
+    backgroundColor: "#FFFFFF"
   }
     
 });
