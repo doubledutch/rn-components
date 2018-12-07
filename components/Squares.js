@@ -18,6 +18,7 @@ import React, { Component } from 'react'
 import ReactNative, { TouchableOpacity, Text, View, Image, Dimensions, Linking } from 'react-native'
 import Footer from './Footer'
 import Header from './Header'
+import { linkCheck } from './functionHelpers'
 
 export default class Squares extends Component {
   constructor(props) {
