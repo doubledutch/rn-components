@@ -25,20 +25,21 @@ export default class TextView extends Component {
   }
   
   render(){
-    const { footer, buttonURL, buttonText, header, title, des, content, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, content, intro, color } = this.props
     return(
       <View style={s.container}>
         <Header
-        header = {header}
-        title = {title}
-        des = {des}
-        intro = {intro}
+          header = {header}
+          title = {title}
+          des = {des}
+          intro = {intro}
         />
         <Text style={s.content}>{content}</Text>
         <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+          color={color}
         />
       </View>
     )

@@ -34,8 +34,7 @@ export default class LandingPage extends Component {
   }
 
   viewPage = () => {
-    const color = this.props.color
-    const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro } = this.props
+    const { headline, title, des, excludeNativeComponents, video, bold, footer, buttonURL, buttonText, intro, color } = this.props
     if (bold){
       return(
       <View style={s.container}>
@@ -52,6 +51,7 @@ export default class LandingPage extends Component {
           footer={footer}
           buttonURL={buttonURL}
           buttonText={buttonText}
+          color={color}
         />
       </View>
       )

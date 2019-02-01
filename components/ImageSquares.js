@@ -29,7 +29,7 @@ export default class ImageSquares extends Component {
   render(){
     const width = Dimensions.get('window').width / 2 - 15
     const height = width
-    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, intro, url1, url2, url3, url4 } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, image4, intro, url1, url2, url3, url4, color } = this.props
       return (
         <View style={s.component}>
           <Header
@@ -59,9 +59,10 @@ export default class ImageSquares extends Component {
             </View>
           </View>
           <Footer
-          footer={footer}
-          buttonURL={buttonURL}
-          buttonText={buttonText}
+            footer={footer}
+            buttonURL={buttonURL}
+            buttonText={buttonText}
+            color={color}
           />
         </View>
       )
