@@ -35,7 +35,7 @@ export default class OneImage extends Component {
   }
   
   render(){
-    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro, color } = this.props
     const { aspectRatio } = this.state
     return(
       <View style={s.container}>
@@ -47,9 +47,10 @@ export default class OneImage extends Component {
         />
         <Image source={{uri: this.props.imageInfo.image}} style={[s.dimensionStyle, {aspectRatio}]}/>
         <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+          color={color}
         />
       </View>
     )

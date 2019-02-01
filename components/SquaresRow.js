@@ -29,14 +29,14 @@ export default class SquaresRow extends Component {
   render(){
     const width = Dimensions.get('window').width / 3 - 20
     const height = width
-    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, intro, url1, url2, url3 } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, image1, image2, image3, intro, url1, url2, url3, color } = this.props
       return (
         <View style={s.component}>
           <Header
-          header = {header}
-          title = {title}
-          des = {des}
-          intro = {intro}
+            header = {header}
+            title = {title}
+            des = {des}
+            intro = {intro}
           />
           <View style={s.box}>
             <View style={{flexDirection:'row'}}>
@@ -54,9 +54,10 @@ export default class SquaresRow extends Component {
             </View>
           </View>
           <Footer
-          footer={footer}
-          buttonURL={buttonURL}
-          buttonText={buttonText}
+            footer={footer}
+            buttonURL={buttonURL}
+            buttonText={buttonText}
+            color={color}
           />
         </View>
       )

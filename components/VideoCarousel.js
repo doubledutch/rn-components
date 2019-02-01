@@ -124,14 +124,14 @@ export default class VideoCarousel extends Component {
   
   render() {
     const width = Dimensions.get('window').width
-    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro, color } = this.props
     return (
       <View style={s.component}>
         <Header
-        header = {header}
-        title = {title}
-        des = {des}
-        intro = {intro}
+          header = {header}
+          title = {title}
+          des = {des}
+          intro = {intro}
         />
         <Carousel
         indicatorAtBottom={true}
@@ -142,9 +142,10 @@ export default class VideoCarousel extends Component {
           {this.carouselCells(width)}    
         </Carousel>
         <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+          color={color}
         />
       </View>
     )

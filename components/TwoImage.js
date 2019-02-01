@@ -42,21 +42,22 @@ export default class TwoImage extends Component {
   }
   
   render(){
-    const { footer, buttonURL, buttonText, header, title, des, imageInfo, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, imageInfo, intro, color } = this.props
     return(
       <View style={s.container}>
         <Header
-        header = {header}
-        title = {title}
-        des = {des}
-        intro = {intro}
+          header = {header}
+          title = {title}
+          des = {des}
+          intro = {intro}
         />
         <Image source={{uri: imageInfo[0].image}} style={[s.dimensionStyle, {aspectRatio: this.state.aspectRatio}]}/>
         <Image source={{uri: imageInfo[1].image}} style={[s.dimensionStyle1, {aspectRatio: this.state.aspectRatioBottom} ]}/>
         <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+          color={color}
         />
       </View>
     )

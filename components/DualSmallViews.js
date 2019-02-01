@@ -42,7 +42,7 @@ export default class DualSmallViews extends Component {
   }
 
   render() {
-    const { image1, title1, des1, image2, title2, des2, url1, url2, footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const { image1, title1, des1, image2, title2, des2, url1, url2, footer, buttonURL, buttonText, header, title, des, intro, color } = this.props
     return(
       <View style={s.container}>
         <Header
@@ -69,6 +69,7 @@ export default class DualSmallViews extends Component {
           footer={footer}
           buttonURL={buttonURL}
           buttonText={buttonText}
+          color={color}
         />
       </View>
     )

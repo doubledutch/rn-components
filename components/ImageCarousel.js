@@ -54,7 +54,7 @@ export default class ImageCarousel extends Component {
   
   render() {
     const height = (Dimensions.get('window').width / this.state.aspectRatio) + 25
-    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro, color } = this.props
     return (
       <View style={s.component}>
         <Header
@@ -75,6 +75,7 @@ export default class ImageCarousel extends Component {
         footer={footer}
         buttonURL={buttonURL}
         buttonText={buttonText}
+        color={color}
         />
       </View>
     )
