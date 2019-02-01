@@ -66,9 +66,10 @@ export default class LandingPage extends Component {
         </View>
         {this.renderImage()}
         <Footer
-        footer={footer}
-        buttonURL={buttonURL}
-        buttonText={buttonText}
+          footer={footer}
+          buttonURL={buttonURL}
+          buttonText={buttonText}
+          color={color}
         />
       </View>
       )
