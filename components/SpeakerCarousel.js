@@ -81,7 +81,7 @@ export default class SpeakerCarousel extends Component {
 
 
   render() {
-    const { footer, buttonURL, buttonText, header, title, des, intro } = this.props
+    const { footer, buttonURL, buttonText, header, title, des, intro, color } = this.props
     const maxLines = this.findLines()
     return (
       <View style={s.container}>
@@ -104,6 +104,7 @@ export default class SpeakerCarousel extends Component {
         footer={footer}
         buttonURL={buttonURL}
         buttonText={buttonText}
+        color={color}
         />
       </View>
     )
