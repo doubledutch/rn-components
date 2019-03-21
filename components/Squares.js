@@ -52,23 +52,23 @@ export default class Squares extends Component {
           <View style={{flexDirection:'row', marginBottom: 10}}>
             <TouchableOpacity onPress={()=>linkCheck(url1 || "")} style={s.cellLeft}>
               <Image style={{width, aspectRatio}} source={{uri: image1}}/>
-              <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text1}</Text>
+              <Text style={{textAlign:'center', color: '#364247', width}}>{this.props.text1}</Text>
             </TouchableOpacity>
             <View style={{flex: 1}}/>
             <TouchableOpacity onPress={()=>linkCheck(url2 || "")} style={s.cellRight}>
               <Image style={{width, aspectRatio}} source={{uri: image2}}/>
-              <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text2}</Text>
+              <Text style={{textAlign:'center', color: '#364247', width}}>{this.props.text2}</Text>
             </TouchableOpacity>  
           </View>
           <View style={{flexDirection:'row', marginBottom: 10}}>
             <TouchableOpacity onPress={()=>linkCheck(url3 || "")} style={s.cellLeft}>
               <Image style={{width, aspectRatio}} source={{uri: image3}}/>
-              <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text3}</Text>
+              <Text style={{textAlign:'center', color: '#364247', width}}>{this.props.text3}</Text>
             </TouchableOpacity>
             <View style={{flex: 1}}/>
             <TouchableOpacity onPress={()=>linkCheck(url4 || "")} style={s.cellRight}>
               <Image style={{width, aspectRatio}} source={{uri: image4}}/>
-              <Text style={{textAlign:'center', color: '#364247'}}>{this.props.text4}</Text>
+              <Text style={{textAlign:'center', color: '#364247', width}}>{this.props.text4}</Text>
             </TouchableOpacity>
           </View>
         </View>
